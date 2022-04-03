@@ -8,8 +8,7 @@
 *Class: ELEX 7660 - Digital System Design
 *
 *Module Description: 
-*
-*
+*	Top level Entity used to handle state machine and individual modules
 *
 *
 *
@@ -29,6 +28,7 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	logic [7:0] count = 'b0;	//counter for determining which 8-segment led
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 	
+  // Probably need anothe module to handle what and when things are sent to the LEDs
 	always_ff@(posedge clk) begin
 		if (kphit == 1'b1) begin
 			while (kphit == 1'b1)
@@ -44,11 +44,67 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	assign ct = {digit[3], digit[2], digit[1], digit[0]} ;
 	
 
-
 	// instantiate your modules here...
 	decode7 decode7_0 (.num,.leds) ;
 	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num);
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
+
+  logic [7:0] current_state;
+  logic [7:0] next_state;
+  
+  // System States
+  localparam 
+    start_up  = 0x0,
+    game_1    = 0x1,
+    game_2    = 0x2
+    game_3    = 0x3,
+    victory   = 0x4;
+    fubar     = 0x5; //error state if anything bad happens
+
+  // Almost everything should be inside this case statement
+  // This block will decide what is sent to the the LEDS/7segs/etc
+  // Also handles where the ADC, and keypad inputs will go
+  always_comb begin : state_logic
+    current_state = next_state;
+    case (current_state)
+      
+      default: begin
+        ;
+      end
+    endcase
+
+  end : state_logic
+
+  end
+
+  // Handles state change in reponse to state logic 
+  always_ff @( posedge clk, negedge reset_n ) begin : state_handler
+
+    if(current_state == start_up      && /* Other */) begin
+      next_state == game_1;
+    end
+
+    else if(current_state == game_1    && /* Other */) begin
+      next_state = game_2
+    end      
+
+    else if(current_state == game_2    && /* Other */) begin
+      next_state = game_3
+    end
+
+    else if(current_state == game_3    && /* Other */) begin
+      next_state = victory
+    end
+
+    else if(current_state == victory   && /* Other */) begin
+      next_state = fubar
+    end
+
+    else begin // WHEN EVERYTHING GOES WRONG
+      next_state = current_state;
+    end
+
+  end : state_handler
    
 endmodule
 
