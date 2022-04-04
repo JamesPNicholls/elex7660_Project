@@ -19,6 +19,10 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
               input logic  [3:0] kpr,  // rows, active-low w/ pull-ups
               output logic [7:0] leds, // active-low LED segments 
               output logic [3:0] ct,   // " digit enables
+              
+              // ADC interface
+              output ADC_CONVST, ADC_SCK, ADC_SDI,  
+					    input ADC_SDO,
               input logic  reset_n, FPGA_CLK1_50 ) ;
 
 	logic clk ;                  // 2kHz clock for keypad scanning
@@ -26,20 +30,11 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	logic [3:0] num ;            // value of pressed key
 	logic [3:0] digit = 4'b0;
 	logic [7:0] count = 'b0;	//counter for determining which 8-segment led
+  logic [2:0] adcChannel;
+  logic [11:0] adcValue;
+
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 	
-  // Probably need anothe module to handle what and when things are sent to the LEDs
-	always_ff@(posedge clk) begin
-		if (kphit == 1'b1) begin
-			while (kphit == 1'b1)
-			digit[count] <= 1'b1;
-			if (count >= 3)
-				count <= 0;
-			else
-				count <= count + 1'b1;
-		end
-
-	end
 	//assign ct = { {2{1'b0}}, kphit, kphit} ;
 	assign ct = {digit[3], digit[2], digit[1], digit[0]} ;
 	
@@ -48,19 +43,22 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	decode7 decode7_0 (.num,.leds) ;
 	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num);
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
-  adcinterface adcinterface_0(  .clk, .reset_n, 3b'000,.result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
-
+  
+  //in order to sample both X and Y we will need  VVVVVV   to toggle that value back and forth.
+  adcinterface adcinterface_0(  .clk, .reset_n,  .chan(adcChannel),    .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
+  
   logic [7:0] current_state;
   logic [7:0] next_state;
   
   // System States
-  localparam 
-    start_up  = 0x0,
-    game_1    = 0x1,
-    game_2    = 0x2
-    game_3    = 0x3,
-    victory   = 0x4;
-    fubar     = 0xa5; //error state if anything bad happens
+  localparam [7:0]
+    start_up  = 0,
+    game_1    = 1,
+    game_2    = 2,
+    game_3    = 3,
+    victory   = 4,
+    fubar     = 15; //error state if anything bad happens
+
 
   // Almost everything should be inside this case statement
   // This block will decide what is sent to the the LEDS/7segs/etc
@@ -68,45 +66,38 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
   always_comb begin : state_logic
     current_state = next_state;
     case (current_state)
-      start_up
-      game_1
-      game_2
-      game_3
-      victory
-      fubar
       default: begin
           
       end
     endcase
 
+
   end : state_logic
 
-  end
-
   // Handles state change in reponse to state logic 
+  // Currently just loops through the states
   always_ff @( posedge clk, negedge reset_n ) begin : state_handler
     if(~reset_n)
       next_state = start_up;
     else begin
 
-      if(current_state == start_up       && /* Other */) begin
-        next_state == game_1;
+      if(current_state == start_up) begin
+        next_state = game_1;
       end
 
-      else if(current_state == game_1    && /* Other */) begin
-        next_state = game_2
+      else if(current_state == game_1  ) begin
+        next_state = game_2;
       end      
 
-      else if(current_state == game_2    && /* Other */) begin
-        next_state = game_3
+      else if(current_state == game_2  ) begin
+        next_state = game_3;
       end
 
-      else if(current_state == game_3    && /* Other */) begin
-        next_state = victory
+      else if(current_state == game_3  ) begin
+        next_state = victory;
       end
 
-      else if(current_state == victory   && /* Other */) begin
-        //loop til reset
+      else if(current_state == victory) begin
         next_state = current_state;
       end
 
@@ -118,9 +109,6 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
   end : state_handler
    
 endmodule
-
-adcValue
-channel
 
 
 // megafunction wizard: %ALTPLL%
