@@ -30,14 +30,15 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	logic [3:0] num ;            // value of pressed key
 	logic [3:0] digit = 4'b0;
 	logic [7:0] count = 'b0;	//counter for determining which 8-segment led
+  
+  // ADC stuff to send to 
   logic [2:0] adcChannel;
   logic [11:0] adcValue;
 
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 	
 	//assign ct = { {2{1'b0}}, kphit, kphit} ;
-	assign ct = {digit[3], digit[2], digit[1], digit[0]} ;
-	
+	assign ct = {digit[3], digit[2], digit[1], digit[0]};	
 
 	// instantiate your modules here...
 	decode7 decode7_0 (.num,.leds) ;
@@ -46,10 +47,13 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
   
   //in order to sample both X and Y we will need  VVVVVV   to toggle that value back and forth.
   adcinterface adcinterface_0(  .clk, .reset_n,  .chan(adcChannel),    .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
+  //ADC outputs values a different clock frequency
+
   
   logic [7:0] current_state;
   logic [7:0] next_state;
   
+
   // System States
   localparam [7:0]
     start_up  = 0,
@@ -66,13 +70,11 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
   always_comb begin : state_logic
     current_state = next_state;
     case (current_state)
-      default: begin
-          
-      end
+      
+      
     endcase
-
-
   end : state_logic
+
 
   // Handles state change in reponse to state logic 
   // Currently just loops through the states
@@ -85,7 +87,7 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
         next_state = game_1;
       end
 
-      else if(current_state == game_1  ) begin
+      else if(current_state == game_1 ) begin
         next_state = game_2;
       end      
 
