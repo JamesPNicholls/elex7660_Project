@@ -48,6 +48,7 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 	decode7 decode7_0 (.num,.leds) ;
 	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num);
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
+  adcinterface adcinterface_0(  .clk, .reset_n, 3b'000,.result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
 
   logic [7:0] current_state;
   logic [7:0] next_state;
@@ -59,7 +60,7 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
     game_2    = 0x2
     game_3    = 0x3,
     victory   = 0x4;
-    fubar     = 0x5; //error state if anything bad happens
+    fubar     = 0xa5; //error state if anything bad happens
 
   // Almost everything should be inside this case statement
   // This block will decide what is sent to the the LEDS/7segs/etc
@@ -67,9 +68,14 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
   always_comb begin : state_logic
     current_state = next_state;
     case (current_state)
-      
+      start_up
+      game_1
+      game_2
+      game_3
+      victory
+      fubar
       default: begin
-        ;
+          
       end
     endcase
 
@@ -79,35 +85,42 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
 
   // Handles state change in reponse to state logic 
   always_ff @( posedge clk, negedge reset_n ) begin : state_handler
+    if(~reset_n)
+      next_state = start_up;
+    else begin
 
-    if(current_state == start_up      && /* Other */) begin
-      next_state == game_1;
-    end
+      if(current_state == start_up       && /* Other */) begin
+        next_state == game_1;
+      end
 
-    else if(current_state == game_1    && /* Other */) begin
-      next_state = game_2
-    end      
+      else if(current_state == game_1    && /* Other */) begin
+        next_state = game_2
+      end      
 
-    else if(current_state == game_2    && /* Other */) begin
-      next_state = game_3
-    end
+      else if(current_state == game_2    && /* Other */) begin
+        next_state = game_3
+      end
 
-    else if(current_state == game_3    && /* Other */) begin
-      next_state = victory
-    end
+      else if(current_state == game_3    && /* Other */) begin
+        next_state = victory
+      end
 
-    else if(current_state == victory   && /* Other */) begin
-      next_state = fubar
-    end
+      else if(current_state == victory   && /* Other */) begin
+        //loop til reset
+        next_state = current_state;
+      end
 
-    else begin // WHEN EVERYTHING GOES WRONG
-      next_state = current_state;
+      else begin
+        next_state = current_state;
+      end
     end
 
   end : state_handler
    
 endmodule
 
+adcValue
+channel
 
 
 // megafunction wizard: %ALTPLL%
