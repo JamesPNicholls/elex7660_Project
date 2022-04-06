@@ -13,46 +13,93 @@
 *
 *
 **********************************************************************/
+`define KP_POWER 4'hd
+`define X_CHANNEL 4'b0000
+`define Y_CHANNEL 4'b0001
 
-module bankVault ( output logic [3:0] kpc,  // column select, active-low
+module bankVault ( 
+              // Clk
+              input logic FPGA_CLK1_50,
+
+              //7-seg, LEDS, kpad
+              output logic [3:0] kpc,  // column select, active-low
               (* altera_attribute = "-name WEAK_PULL_UP_RESISTOR ON" *)
               input logic  [3:0] kpr,  // rows, active-low w/ pull-ups
               output logic [7:0] leds, // active-low LED segments 
               output logic [3:0] ct,   // " digit enables
+              output logic [7:0] LED,  // 8 green LEDS next to ethernet connector
               
               // ADC interface
               output ADC_CONVST, ADC_SCK, ADC_SDI,  
-					    input ADC_SDO,
-              input logic  reset_n, FPGA_CLK1_50 ) ;
+				      input ADC_SDO,
+              input logic  reset_n, 
+              
+              //OLED Controls
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res
 
-	logic clk ;                  // 2kHz clock for keypad scanning
-	logic kphit ;                // a key is pressed
-	logic [3:0] num ;            // value of pressed key
-	logic [3:0] digit = 4'b0;
-	logic [7:0] count = 'b0;	//counter for determining which 8-segment led
-  
-  // ADC stuff to send to 
-  logic [2:0] adcChannel;
-  logic [11:0] adcValue;
+				 
+) ;
+
+  logic clk ;              // clock
+  logic [11:0] adcValue;   // ADC result    
+  logic [3:0] displayNum;	// number to display on 7-seg
+  logic [3:0] kpNum; 		// keypad output
+  logic [1:0] digit;       // 7-seg display digit currently selected
+  logic [7:0] delayCnt;    // delay count to slow down digit cycling on display
+  logic	channel_Gate;
+  logic kphit;             // keypad button press indicator
+
+  //OLED Control string
+  wire [31:0] screen_string;
 
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 	
-	//assign ct = { {2{1'b0}}, kphit, kphit} ;
-	assign ct = {digit[3], digit[2], digit[1], digit[0]};	
+
 
 	// instantiate your modules here...
-	decode7 decode7_0 (.num,.leds) ;
-	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num);
+	decode7 decode7_0 (.num(displayNum), .leds) ;
+	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num(kpNum)) ;
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
   
-  //in order to sample both X and Y we will need  VVVVVV   to toggle that value back and forth.
-  adcinterface adcinterface_0(  .clk, .reset_n,  .chan(adcChannel),    .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
-  //ADC outputs values a different clock frequency
 
   
+  logic [3:0] adc_chan;
+  logic [11:0] adc_x_value;
+  logic [11:0] adc_y_value;
+
+  adcinterface adcinterface_X(  .clk, .reset_n,  .chan(adc_chan), .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
+  //Toggles the channel on the ADC to alternate sampling X and Y axis
+  always_ff @(posedge clk ) begin
+    if ((adc_chan == `X_CHANNEL) && ADC_CONVST) begin
+      adc_chan = `Y_CHANNEL;
+      adc_x_value = adcValue;
+
+    end else if((adc_chan == `Y_CHANNEL)  && ADC_CONVST) begin
+      adc_chan = `X_CHANNEL;
+      adc_y_value = adcValue;
+    end
+
+  end
+
+  assign LED[7:4] = adc_x_value[11:8];
+  assign LED[3:0] = adc_x_value[7:4];
+
+
+  // Processor Instantiation
+  processor u0 (
+		.clk_clk       (FPGA_CLK1_50),    // clk.clk
+		.gpio_export   (screen_string),   // gpio.export
+		.reset_reset_n (rgb_res),          // reset.reset_n
+		.spi_MISO      ('0),              // spi.MISO
+		.spi_MOSI      (rgb_din),         // .MOSI
+		.spi_SCLK      (rgb_clk),         // .SCLK
+		.spi_SS_n      (rgb_cs)           // .SS_n
+	);
+  assign rgb_dc = screen_string[0];   
+  assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
+
   logic [7:0] current_state;
-  logic [7:0] next_state;
-  
+  logic [7:0] next_state;  
 
   // System States
   localparam [7:0]
@@ -64,13 +111,43 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
     fubar     = 15; //error state if anything bad happens
 
 
-  // Almost everything should be inside this case statement
-  // This block will decide what is sent to the the LEDS/7segs/etc
-  // Also handles where the ADC, and keypad inputs will go
+
+/******************TESTING ADC********************************/
+	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
+    always_ff @(posedge clk) begin
+	// only switch to next digit when count rolls over for crisp display
+		begin
+			delayCnt <= delayCnt + 1'b1;  
+			if (delayCnt == 0)
+				if (digit >= 2)
+					digit <= '0;
+				else
+					digit <= digit + 1'b1 ;
+		end 
+	end
+
+    // enable the 7-segment module for the selected digit
+	
+	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+
+
+    // select the bits from the 12-bit ADC result for the selected digit	
+	always_comb
+	case( digit )
+        2 : displayNum = adc_y_value[11:8] ;
+        1 : displayNum = adc_y_value[7:4] ;
+        0 : displayNum = adc_y_value[3:0] ;
+		default: 
+           displayNum = 'hf ; 
+    endcase
+/******************TESTING ADC********************************/
+
+  //currently does nothing
   always_comb begin : state_logic
     current_state = next_state;
-    case (current_state)
-      
+    case (current_state)      
+      default : begin
+      end
       
     endcase
   end : state_logic
@@ -83,7 +160,7 @@ module bankVault ( output logic [3:0] kpc,  // column select, active-low
       next_state = start_up;
     else begin
 
-      if(current_state == start_up) begin
+      if(current_state == start_up && 0) begin
         next_state = game_1;
       end
 
