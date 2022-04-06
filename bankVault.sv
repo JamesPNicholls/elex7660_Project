@@ -40,14 +40,13 @@ module bankVault (
 				 
 ) ;
 
-  logic clk ;              // clock
-  logic [11:0] adcValue;   // ADC result    
-  logic [3:0] displayNum;	// number to display on 7-seg
-  logic [3:0] kpNum; 		// keypad output
-  logic [1:0] digit;       // 7-seg display digit currently selected
-  logic [7:0] delayCnt;    // delay count to slow down digit cycling on display
-  logic	channel_Gate;
-  logic kphit;             // keypad button press indicator
+  logic clk ;               // clock
+  logic [11:0] adcValue;    // ADC result    
+  logic [3:0] displayNum;	  // number to display on 7-seg
+  logic [3:0] kpNum; 		    // keypad output
+  logic [1:0] digit;        // 7-seg display digit currently selected
+  logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
+  logic kphit;              // keypad button press indicator
 
   //OLED Control string
   wire [31:0] screen_string;
@@ -60,9 +59,8 @@ module bankVault (
 	decode7 decode7_0 (.num(displayNum), .leds) ;
 	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num(kpNum)) ;
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
-  
 
-  
+  // ADC interface signals   
   logic [3:0] adc_chan;
   logic [11:0] adc_x_value;
   logic [11:0] adc_y_value;
@@ -78,12 +76,7 @@ module bankVault (
       adc_chan = `X_CHANNEL;
       adc_y_value = adcValue;
     end
-
   end
-
-  assign LED[7:4] = adc_x_value[11:8];
-  assign LED[3:0] = adc_x_value[7:4];
-
 
   // Processor Instantiation
   processor u0 (
@@ -95,6 +88,7 @@ module bankVault (
 		.spi_SCLK      (rgb_clk),         // .SCLK
 		.spi_SS_n      (rgb_cs)           // .SS_n
 	);
+
   assign rgb_dc = screen_string[0];   
   assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
 
@@ -109,38 +103,6 @@ module bankVault (
     game_3    = 3,
     victory   = 4,
     fubar     = 15; //error state if anything bad happens
-
-
-
-/******************TESTING ADC********************************/
-	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
-    always_ff @(posedge clk) begin
-	// only switch to next digit when count rolls over for crisp display
-		begin
-			delayCnt <= delayCnt + 1'b1;  
-			if (delayCnt == 0)
-				if (digit >= 2)
-					digit <= '0;
-				else
-					digit <= digit + 1'b1 ;
-		end 
-	end
-
-    // enable the 7-segment module for the selected digit
-	
-	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
-
-
-    // select the bits from the 12-bit ADC result for the selected digit	
-	always_comb
-	case( digit )
-        2 : displayNum = adc_y_value[11:8] ;
-        1 : displayNum = adc_y_value[7:4] ;
-        0 : displayNum = adc_y_value[3:0] ;
-		default: 
-           displayNum = 'hf ; 
-    endcase
-/******************TESTING ADC********************************/
 
   //currently does nothing
   always_comb begin : state_logic
