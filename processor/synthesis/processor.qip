@@ -2,7 +2,7 @@ set_global_assignment -entity "processor" -library "processor" -name IP_TOOL_NAM
 set_global_assignment -entity "processor" -library "processor" -name IP_TOOL_VERSION "18.0"
 set_global_assignment -entity "processor" -library "processor" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "processor" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../processor.sopcinfo"]
-set_global_assignment -entity "processor" -library "processor" -name SLD_INFO "QSYS_NAME processor HAS_SOPCINFO 1 GENERATION_ID 1649197260"
+set_global_assignment -entity "processor" -library "processor" -name SLD_INFO "QSYS_NAME processor HAS_SOPCINFO 1 GENERATION_ID 1649311811"
 set_global_assignment -library "processor" -name MISC_FILE [file join $::quartus(qip_path) "../processor.cmp"]
 set_global_assignment -library "processor" -name SLD_FILE [file join $::quartus(qip_path) "processor.regmap"]
 set_global_assignment -library "processor" -name SLD_FILE [file join $::quartus(qip_path) "processor.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "processor" -library "processor" -name IP_COMPONEN
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY0OTE5NzI2MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY0OTMxMTgxMQ==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNFUyM0M2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "processor" -library "processor" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -979,13 +979,16 @@ set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMP
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_VERSION "MTguMA=="
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "Yml0TW9kaWZ5aW5nT3V0UmVn::ZmFsc2U=::RW5hYmxlIGluZGl2aWR1YWwgYml0IHNldHRpbmcvY2xlYXJpbmc="
-set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGlyZWN0aW9u::T3V0cHV0::RGlyZWN0aW9u"
+set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "Y2FwdHVyZUVkZ2U=::ZmFsc2U=::U3luY2hyb25vdXNseSBjYXB0dXJl"
+set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGlyZWN0aW9u::SW5PdXQ=::RGlyZWN0aW9u"
+set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "Z2VuZXJhdGVJUlE=::ZmFsc2U=::R2VuZXJhdGUgSVJR"
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "cmVzZXRWYWx1ZQ==::MzEzNDk4MzE3OA==::T3V0cHV0IFBvcnQgUmVzZXQgVmFsdWU="
+set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "c2ltRG9UZXN0QmVuY2hXaXJpbmc=::ZmFsc2U=::SGFyZHdpcmUgUElPIGlucHV0cyBpbiB0ZXN0IGJlbmNo"
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "d2lkdGg=::MzI=::V2lkdGggKDEtMzIgYml0cyk="
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::NTAwMDAwMDA=::Y2xvY2tSYXRl"
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfdHJp::ZmFsc2U=::ZGVyaXZlZF9oYXNfdHJp"
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfb3V0::dHJ1ZQ==::ZGVyaXZlZF9oYXNfb3V0"
-set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaW4=::ZmFsc2U=::ZGVyaXZlZF9oYXNfaW4="
+set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaW4=::dHJ1ZQ==::ZGVyaXZlZF9oYXNfaW4="
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw==::ZmFsc2U=::ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw=="
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9jYXB0dXJl::ZmFsc2U=::ZGVyaXZlZF9jYXB0dXJl"
 set_global_assignment -entity "processor_pio" -library "processor" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9lZGdlX3R5cGU=::Tk9ORQ==::ZGVyaXZlZF9lZGdlX3R5cGU="

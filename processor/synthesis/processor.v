@@ -5,7 +5,8 @@
 `timescale 1 ps / 1 ps
 module processor (
 		input  wire        clk_clk,       //   clk.clk
-		output wire [31:0] gpio_export,   //  gpio.export
+		input  wire [31:0] gpio_in_port,  //  gpio.in_port
+		output wire [31:0] gpio_out_port, //      .out_port
 		input  wire        reset_reset_n, // reset.reset_n
 		input  wire        spi_MISO,      //   spi.MISO
 		output wire        spi_MOSI,      //      .MOSI
@@ -105,7 +106,8 @@ module processor (
 		.writedata  (mm_interconnect_0_pio_s1_writedata),  //                    .writedata
 		.chipselect (mm_interconnect_0_pio_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_pio_s1_readdata),   //                    .readdata
-		.out_port   (gpio_export)                          // external_connection.export
+		.in_port    (gpio_in_port),                        // external_connection.export
+		.out_port   (gpio_out_port)                        //                    .export
 	);
 
 	processor_processor processor (

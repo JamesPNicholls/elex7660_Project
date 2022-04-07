@@ -11,13 +11,13 @@ preplace inst processor.processor.reset_bridge -pg 1
 preplace inst processor.processor -pg 1 -lvl 2 -y 370
 preplace inst processor.jtag_uart -pg 1 -lvl 3 -y 110
 preplace inst processor.pio -pg 1 -lvl 3 -y 330
-preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)processor.reset,(SLAVE)clock.clk_in_reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>processor</net_container>(MASTER)clock.clk_reset,(SLAVE)memory.reset1,(SLAVE)timer.reset,(SLAVE)jtag_uart.reset,(SLAVE)spi_0.reset,(SLAVE)pio.reset,(SLAVE)processor.reset) 1 1 2 260 510 640
-preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)clock.clk_in,(SLAVE)processor.clk) 1 0 1 NJ
-preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)processor.spi,(SLAVE)spi_0.external) 1 0 3 NJ 240 NJ 240 NJ
-preplace netloc INTERCONNECT<net_container>processor</net_container>(SLAVE)pio.s1,(SLAVE)memory.s1,(SLAVE)processor.debug_mem_slave,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)spi_0.spi_control_port,(MASTER)processor.instruction_master,(MASTER)processor.data_master,(SLAVE)timer.s1) 1 1 2 280 310 680
-preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)processor.gpio,(SLAVE)pio.external_connection) 1 0 3 NJ 330 NJ 330 NJ
-preplace netloc FAN_OUT<net_container>processor</net_container>(SLAVE)spi_0.irq,(MASTER)processor.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq) 1 2 1 720
-preplace netloc FAN_OUT<net_container>processor</net_container>(SLAVE)spi_0.clk,(SLAVE)jtag_uart.clk,(SLAVE)memory.clk1,(SLAVE)pio.clk,(MASTER)clock.clk,(SLAVE)timer.clk,(SLAVE)processor.clk) 1 1 2 260 220 700
-levelinfo -pg 1 0 50 910
-levelinfo -hier processor 60 90 400 750 900
+preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)pio.external_connection,(SLAVE)processor.gpio) 1 0 3 NJ 290 NJ 290 NJ
+preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)clock.clk_in_reset,(SLAVE)processor.reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>processor</net_container>(MASTER)clock.clk,(SLAVE)jtag_uart.clk,(SLAVE)timer.clk,(SLAVE)spi_0.clk,(SLAVE)processor.clk,(SLAVE)memory.clk1,(SLAVE)pio.clk) 1 1 2 260 270 680
+preplace netloc FAN_OUT<net_container>processor</net_container>(SLAVE)jtag_uart.reset,(SLAVE)pio.reset,(SLAVE)timer.reset,(SLAVE)processor.reset,(MASTER)clock.clk_reset,(SLAVE)spi_0.reset,(SLAVE)memory.reset1) 1 1 2 280 310 700
+preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)processor.clk,(SLAVE)clock.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>processor</net_container>(SLAVE)spi_0.external,(SLAVE)processor.spi) 1 0 3 NJ 240 NJ 240 NJ
+preplace netloc FAN_OUT<net_container>processor</net_container>(SLAVE)spi_0.irq,(MASTER)processor.irq,(SLAVE)jtag_uart.irq,(SLAVE)timer.irq) 1 2 1 740
+preplace netloc INTERCONNECT<net_container>processor</net_container>(MASTER)processor.instruction_master,(SLAVE)memory.s1,(SLAVE)timer.s1,(SLAVE)pio.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)processor.debug_mem_slave,(MASTER)processor.data_master,(SLAVE)spi_0.spi_control_port) 1 1 2 300 330 720
+levelinfo -pg 1 0 50 930
+levelinfo -hier processor 60 90 420 770 920
