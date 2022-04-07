@@ -41,7 +41,7 @@ void cursor_get_pos(struct cursor *self, int *pi_base)
 {
     unsigned int adc_val    = *pi_base;
     char adc_conv  = (adc_val >> 12)/ADC_CONV_COEFF; 
-    if(adc_val & ADC_CHANNEL_MASK)
+    if(adc_val && ADC_CHANNEL_MASK)
     {
         self->x_pos = 0x20;
     }
