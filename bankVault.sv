@@ -15,7 +15,7 @@
 **********************************************************************/
 `define KP_POWER 4'hd
 `define X_CHANNEL 1
-`define Y_CHANNEL 1
+`define Y_CHANNEL 0
 
 module bankVault ( 
               // Clk
@@ -68,29 +68,27 @@ module bankVault (
     if ((adc_chan == `X_CHANNEL) && ADC_CONVST) begin
       
       //Store Value
-      adc_x_value <= adcValue; 
+      adc_x_value = adcValue; 
       // Send signal to PIO
-      rgb_input[31:20] <= adc_x_value;
-      rgb_input[19]    <= `X_CHANNEL;
-
+      rgb_input[31:20] = adc_x_value;
       //Set channel to poll the other channel
-      adc_chan[0] <= `Y_CHANNEL;
+      adc_chan[0] = `Y_CHANNEL;
 
     end else if((adc_chan == `Y_CHANNEL)  && ADC_CONVST) begin
       adc_y_value = adcValue;
-      rgb_input[31:20] <= adc_y_value;
-      rgb_input[19]    <= `Y_CHANNEL;
-
-      adc_chan[0] <= `X_CHANNEL;
+      rgb_input[19:8] = adc_y_value;
+      adc_chan[0] = `X_CHANNEL;
     end
+    rgb_input[7:4] = 4'b111;
+    rgb_input[3:1] = game_1;
   end
 
   // Processor Instantiation
   processor u0 (
 		.clk_clk       (FPGA_CLK1_50),    // clk.clk
-		.gpio_in_port  (rgb_input),  //  gpio.in_port
-		.gpio_out_port (rgb_output), //      .out_port
-		.reset_reset_n (rgb_res),          // reset.reset_n
+		.gpio_in_port  (rgb_input),       // gpio.in_port
+		.gpio_out_port (rgb_output),      // gpio.out_port
+		.reset_reset_n (rgb_res),         // reset.reset_n
 		.spi_MISO      ('0),              // spi.MISO
 		.spi_MOSI      (rgb_din),         // .MOSI
 		.spi_SCLK      (rgb_clk),         // .SCLK
@@ -99,20 +97,21 @@ module bankVault (
 
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
-  assign rgb_dc = rgb_output[0];   
+  assign rgb_dc = rgb_output[0];
+  assign rgb_input[1] = rgb_clk;   
   assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
 
   logic [7:0] current_state;
   logic [7:0] next_state;  
 
   // System States
-  localparam [7:0]
+  localparam [2:0]
     start_up  = 0,
     game_1    = 1,
     game_2    = 2,
     game_3    = 3,
-    victory   = 4,
-    fubar     = 15; //error state if anything bad happens
+    victory   = 4;
+    fubar     = 7; //error state if anything bad happens
 
   /******************TESTING ADC********************************/
 	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
@@ -136,9 +135,9 @@ module bankVault (
     // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-        2 : displayNum = rgb_input[31:28] ;
-        1 : displayNum = rgb_input[27:24] ;
-        0 : displayNum = rgb_input[23:20] ;
+        2 : displayNum <= rgb_input[31:28] ;
+        1 : displayNum <= rgb_input[27:24] ;
+        0 : displayNum <= rgb_input[23:20] ;
 		default: 
            displayNum = 'hf ; 
     endcase
@@ -147,7 +146,7 @@ module bankVault (
 
   //currently does nothing
   always_comb begin : state_logic
-    current_state = next_state;
+    current_state <= next_state;
     case (current_state)      
       default : begin
         
@@ -161,31 +160,31 @@ module bankVault (
   // Currently just loops through the states
   always_ff @( posedge clk, negedge reset_n ) begin : state_handler
     if(~reset_n)
-      next_state = start_up;
+      next_state <= start_up;
     else begin
 
       if(current_state == start_up && 0) begin
-        next_state = game_1;
+        next_state <= game_1;
       end
 
       else if(current_state == game_1 ) begin
-        next_state = game_2;
+        next_state <= game_2;
       end      
 
       else if(current_state == game_2  ) begin
-        next_state = game_3;
+        next_state <= game_3;
       end
 
       else if(current_state == game_3  ) begin
-        next_state = victory;
+        next_state <= victory;
       end
 
       else if(current_state == victory) begin
-        next_state = current_state;
+        next_state <= current_state;
       end
 
       else begin
-        next_state = current_state;
+        next_state <= current_state;
       end
     end
 

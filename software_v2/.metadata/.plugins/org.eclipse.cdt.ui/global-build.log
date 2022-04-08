@@ -243,3 +243,1202 @@ Info: Building ../processor_v2_bsp/
 C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
 [BSP build complete]
 [processor_v2 build complete]
+11:02:08 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:8:0:
+graphic_top.h: In function 'cursor_get_pos':
+graphic_top.h:43:10: warning: unused variable 'adc_conv' [-Wunused-variable]
+     char adc_conv  = (adc_val >> 12)/ADC_CONV_COEFF; 
+          ^
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:40:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1192 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:02:14 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:15:31 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:15:33 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:15:35 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:15:47 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:15:48 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:16:17 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:17:09 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:17:11 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:17:15 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:17:39 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:18:53 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:19:23 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:20:18 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:20:19 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:20:25 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:20:39 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:22:38 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:33:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1996 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:22:41 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:23:13 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:7:0:
+graphic_top.h: In function 'cursor_get_pos':
+graphic_top.h:45:19: error: 'ADC_CHANNEL_X_nY' undeclared (first use in this function)
+     if(adc_val && ADC_CHANNEL_X_nY)
+                   ^
+graphic_top.h:45:19: note: each undeclared identifier is reported only once for each function it appears in
+graphic_top.c: In function 'main':
+graphic_top.c:34:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+11:23:14 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:23:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:34:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:23:28 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:23:39 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:23:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:24:42 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:41:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1056 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:24:44 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:25:11 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:26:04 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:32:01 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:41:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1052 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:32:04 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:32:10 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:42:51 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:41:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1052 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:42:53 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:43:18 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:50:06 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:8:0:
+graphic_top.h: In function 'cursor_get_pos':
+graphic_top.h:43:36: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+     unsigned long int adc_val    = pi_base;
+                                    ^
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:41:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1056 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:50:08 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:50:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:59:29: warning: passing argument 2 of 'cursor_get_pos' makes pointer from integer without a cast [-Wint-conversion]
+   cursor_get_pos( &sCursor, *(int*)PIO_BASE);
+                             ^
+In file included from graphic_top.c:8:0:
+graphic_top.h:41:6: note: expected 'int *' but argument is of type 'int'
+ void cursor_get_pos(struct cursor *self, int *pi_base)
+      ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1056 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:50:43 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:50:49 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+11:55:50 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+11:55:52 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+11:56:26 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:04:18 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:04:20 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:05:35 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:05:38 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:06:01 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:06:03 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:06:05 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:06:07 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:06:11 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:10:49 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1060 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:10:51 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:18:01 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:8:0:
+graphic_top.h: In function 'cursor_get_pos':
+graphic_top.h:45:15: warning: unused variable 'conv' [-Wunused-variable]
+  unsigned int conv    = shift/ADC_X_COEFF;
+               ^
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1028 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:18:03 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:18:08 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:22:49 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:8:0:
+graphic_top.h: In function 'cursor_get_pos':
+graphic_top.h:45:15: warning: unused variable 'conv' [-Wunused-variable]
+  unsigned int conv    = shift/ADC_X_COEFF;
+               ^
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1024 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:22:51 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:22:56 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:22:57 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:23:04 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1056 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:24:54 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1056 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:24:56 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:25:26 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1064 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:25:28 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:25:32 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:27:07 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:8:0:
+graphic_top.h: In function 'cursor_draw':
+graphic_top.h:34:2: warning: implicit declaration of function 'clear_screen' [-Wimplicit-function-declaration]
+  clear_screen();
+  ^
+graphic_top.h: At top level:
+graphic_top.h:66:6: warning: conflicting types for 'clear_screen'
+ void clear_screen()
+      ^
+graphic_top.h:34:2: note: previous implicit declaration of 'clear_screen' was here
+  clear_screen();
+  ^
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1104 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:27:09 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:27:37 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:62:3: error: expected ';' before 'cursor_draw'
+   cursor_draw(&sCursor);
+   ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+12:27:38 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:27:52 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1104 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:27:55 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:28:04 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:28:05 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:28:11 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:30:39 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1096 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:30:41 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:33:29 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1108 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:33:32 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:33:34 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:33:35 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:33:43 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:34:34 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1096 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:34:36 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:34:43 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:35:26 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1112 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:35:28 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:35:31 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:37:16 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+graphic_top.c:37:9: warning: unused variable 'y' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+         ^
+graphic_top.c:37:6: warning: unused variable 'x' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+      ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1320 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:37:18 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:37:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:38:09 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+graphic_top.c:37:9: warning: unused variable 'y' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+         ^
+graphic_top.c:37:6: warning: unused variable 'x' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+      ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1316 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:38:11 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:38:15 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+12:39:09 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:57:3: error: expected ';' before 'clear_screen'
+   clear_screen();
+   ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+graphic_top.c:37:9: warning: unused variable 'y' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+         ^
+graphic_top.c:37:6: warning: unused variable 'x' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+      ^
+make: *** [obj/default/graphic_top.o] Error 1
+12:39:11 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:39:15 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+graphic_top.c:37:9: warning: unused variable 'y' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+         ^
+graphic_top.c:37:6: warning: unused variable 'x' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+      ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1288 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+12:39:18 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+12:39:28 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+18:36:19 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+graphic_top.c:37:9: warning: unused variable 'y' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+         ^
+graphic_top.c:37:6: warning: unused variable 'x' [-Wunused-variable]
+  int x, y ; // array indices used to access pixel data in image arra
+      ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1344 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:14:34 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:36:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1064 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:14:38 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:14:48 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:35:15 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:36:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1064 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:35:19 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:35:24 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:50:53 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:36:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1036 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:50:55 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:51:00 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:16:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:58:6: warning: unused variable 'delay' [-Wunused-variable]
+  int delay = 1; //1 ms
+      ^
+graphic_top.c:57:10: warning: unused variable 'new_time' [-Wunused-variable]
+  clock_t new_time = 0;
+          ^
+graphic_top.c:56:10: warning: unused variable 'old_time' [-Wunused-variable]
+  clock_t old_time = clock();
+          ^
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    700 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:16:44 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:16:52 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    720 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:16:55 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:17:05 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    720 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:17:07 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:17:10 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:18:08 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:38:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    720 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:18:10 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
