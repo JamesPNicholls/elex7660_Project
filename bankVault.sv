@@ -8,50 +8,189 @@
 *Class: ELEX 7660 - Digital System Design
 *
 *Module Description: 
-*
-*
+*	Top level Entity used to handle state machine and individual modules
 *
 *
 *
 **********************************************************************/
+`define KP_POWER 4'hd
+`define X_CHANNEL 1
+`define Y_CHANNEL 0
 
-module bankVault ( output logic [3:0] kpc,  // column select, active-low
+module bankVault ( 
+              // Clk
+              input logic FPGA_CLK1_50,
+
+              //7-seg, LEDS, kpad
+              output logic [3:0] kpc,  // column select, active-low
               (* altera_attribute = "-name WEAK_PULL_UP_RESISTOR ON" *)
               input logic  [3:0] kpr,  // rows, active-low w/ pull-ups
               output logic [7:0] leds, // active-low LED segments 
               output logic [3:0] ct,   // " digit enables
-              input logic  reset_n, FPGA_CLK1_50 ) ;
+              output logic [7:0] LED,  // 8 green LEDS next to ethernet connector
+              
+              // ADC interface
+              output ADC_CONVST, ADC_SCK, ADC_SDI,  
+				      input ADC_SDO,
+              input logic  reset_n, 
+              
+              //OLED Controls
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res
 
-	logic clk ;                  // 2kHz clock for keypad scanning
-	logic kphit ;                // a key is pressed
-	logic [3:0] num ;            // value of pressed key
-	logic [3:0] digit = 4'b0;
-	logic [7:0] count = 'b0;	//counter for determining which 8-segment led
+				 
+) ;
+
+  logic clk ;               // clock
+  logic [11:0] adcValue;    // ADC result    
+  logic [3:0] displayNum;	  // number to display on 7-seg
+  logic [3:0] kpNum; 		    // keypad output
+  logic [1:0] digit;        // 7-seg display digit currently selected
+  logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
+  logic kphit;              // keypad button press indicator
+
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
-	
-	always_ff@(posedge clk) begin
-		if (kphit == 1'b1) begin
-			while (kphit == 1'b1)
-			digit[count] <= 1'b1;
-			if (count >= 3)
-				count <= 0;
-			else
-				count <= count + 1'b1;
-		end
-
-	end
-	//assign ct = { {2{1'b0}}, kphit, kphit} ;
-	assign ct = {digit[3], digit[2], digit[1], digit[0]} ;
-	
-
 
 	// instantiate your modules here...
-	decode7 decode7_0 (.num,.leds) ;
-	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num);
+	decode7 decode7_0 (.num(displayNum), .leds) ;
+	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num(kpNum)) ;
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
+
+  // ADC interface signals   
+  logic [3:0] adc_chan;
+  logic [11:0] adc_x_value;
+  logic [11:0] adc_y_value;
+
+  adcinterface adcinterface_X(  .clk, .reset_n,  .chan(adc_chan), .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
+  
+  //Toggles the channel on the ADC to alternate sampling X and Y axis
+  always_ff @(posedge clk ) begin
+    adc_chan[3:1] = 0;
+    if ((adc_chan == `X_CHANNEL) && ADC_CONVST) begin
+      
+      //Store Value
+      adc_x_value = adcValue; 
+      // Send signal to PIO
+      rgb_input[31:20] = adc_x_value;
+      //Set channel to poll the other channel
+      adc_chan[0] = `Y_CHANNEL;
+
+    end else if((adc_chan == `Y_CHANNEL)  && ADC_CONVST) begin
+      adc_y_value = adcValue;
+      rgb_input[19:8] = adc_y_value;
+      adc_chan[0] = `X_CHANNEL;
+    end
+    rgb_input[7:4] = 4'b111;
+    rgb_input[3:1] = game_1;
+  end
+
+  // Processor Instantiation
+  processor u0 (
+		.clk_clk       (FPGA_CLK1_50),    // clk.clk
+		.gpio_in_port  (rgb_input),       // gpio.in_port
+		.gpio_out_port (rgb_output),      // gpio.out_port
+		.reset_reset_n (rgb_res),         // reset.reset_n
+		.spi_MISO      ('0),              // spi.MISO
+		.spi_MOSI      (rgb_din),         // .MOSI
+		.spi_SCLK      (rgb_clk),         // .SCLK
+		.spi_SS_n      (rgb_cs)           // .SS_n
+	);
+
+  wire [31:0]rgb_output;
+  wire [31:0]rgb_input;
+  assign rgb_dc = rgb_output[0];
+  assign rgb_input[1] = rgb_clk;   
+  assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
+
+  logic [7:0] current_state;
+  logic [7:0] next_state;  
+
+  // System States
+  localparam [2:0]
+    start_up  = 0,
+    game_1    = 1,
+    game_2    = 2,
+    game_3    = 3,
+    victory   = 4;
+    fubar     = 7; //error state if anything bad happens
+
+  /******************TESTING ADC********************************/
+	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
+    always_ff @(posedge clk) begin
+	// only switch to next digit when count rolls over for crisp display
+		begin
+			delayCnt <= delayCnt + 1'b1;  
+			if (delayCnt == 0)
+				if (digit >= 2)
+					digit <= '0;
+				else
+					digit <= digit + 1'b1 ;
+		end 
+	end
+
+    // enable the 7-segment module for the selected digit
+
+	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+
+
+    // select the bits from the 12-bit ADC result for the selected digit	
+	always_comb
+	case( digit )
+        2 : displayNum <= rgb_input[31:28] ;
+        1 : displayNum <= rgb_input[27:24] ;
+        0 : displayNum <= rgb_input[23:20] ;
+		default: 
+           displayNum = 'hf ; 
+    endcase
+/******************TESTING ADC********************************/
+
+
+  //currently does nothing
+  always_comb begin : state_logic
+    current_state <= next_state;
+    case (current_state)      
+      default : begin
+        
+      end
+      
+    endcase
+  end : state_logic
+
+
+  // Handles state change in reponse to state logic 
+  // Currently just loops through the states
+  always_ff @( posedge clk, negedge reset_n ) begin : state_handler
+    if(~reset_n)
+      next_state <= start_up;
+    else begin
+
+      if(current_state == start_up && 0) begin
+        next_state <= game_1;
+      end
+
+      else if(current_state == game_1 ) begin
+        next_state <= game_2;
+      end      
+
+      else if(current_state == game_2  ) begin
+        next_state <= game_3;
+      end
+
+      else if(current_state == game_3  ) begin
+        next_state <= victory;
+      end
+
+      else if(current_state == victory) begin
+        next_state <= current_state;
+      end
+
+      else begin
+        next_state <= current_state;
+      end
+    end
+
+  end : state_handler
    
 endmodule
-
 
 
 // megafunction wizard: %ALTPLL%
