@@ -1442,3 +1442,1664 @@ nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >p
 20:18:10 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
 make all 
 [BSP build complete]
+18:48:58 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+In file included from graphic_top.c:9:0:
+graphic_top.h:30:1: error: expected ';', identifier or '(' before 'unsigned'
+ unsigned char draw_data[DRAW_SIZE] = {DRAW_COM, 0, 0, WIDTH, HEIGHT, 0, 0, 0, 0, 0, 0 };
+ ^
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+18:49:01 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+18:49:27 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1116 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+18:49:32 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:46:42 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1100 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:46:44 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:46:48 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:47:27 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:47:29 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:47:34 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:48:48 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:48:50 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:49:28 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:56:34 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1564 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:56:36 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:56:40 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:58:10 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1564 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:58:13 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:58:16 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+19:59:26 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1544 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+19:59:29 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+19:59:31 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:36:23 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:92:3: error: label at end of compound statement
+   default:
+   ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+20:36:25 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:37:09 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    972 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:37:12 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:37:28 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:39:20 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    972 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:39:22 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:39:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    972 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:39:27 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:39:30 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:49:35 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+20:53:52 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    720 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+20:53:55 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+20:54:26 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:10:05 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:13:08 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:28:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1572 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+21:13:11 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+21:15:36 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:20:59 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:23:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:31:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1572 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+21:32:54 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:33:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:34:14 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:31:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1572 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+21:34:17 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+21:34:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:39:42 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:41:37 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:31:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1592 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+21:41:41 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+21:42:02 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+21:42:34 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:31:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1564 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+21:42:37 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+21:42:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:06:04 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:06:40 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:31:20: warning: unused variable 'PIO_INPUT' [-Wunused-variable]
+  unsigned long int PIO_INPUT;
+                    ^
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1560 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:06:43 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:16:29 **** Clean-only build of configuration Nios II for project processor_v2 ****
+make clean 
+[processor_v2 clean complete]
+22:16:29 **** Clean-only build of configuration Nios II for project processor_v2_bsp ****
+make clean 
+[BSP clean complete]
+22:16:29 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+Compiling alt_alarm_start.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_alarm_start.o HAL/src/alt_alarm_start.c
+Compiling alt_busy_sleep.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_busy_sleep.o HAL/src/alt_busy_sleep.c
+Compiling alt_close.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_close.o HAL/src/alt_close.c
+Compiling alt_dcache_flush.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush.o HAL/src/alt_dcache_flush.c
+Compiling alt_dcache_flush_all.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush_all.o HAL/src/alt_dcache_flush_all.c
+Compiling alt_dcache_flush_no_writeback.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush_no_writeback.o HAL/src/alt_dcache_flush_no_writeback.c
+Compiling alt_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dev.o HAL/src/alt_dev.c
+Compiling alt_dev_llist_insert.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dev_llist_insert.o HAL/src/alt_dev_llist_insert.c
+Compiling alt_dma_rxchan_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dma_rxchan_open.o HAL/src/alt_dma_rxchan_open.c
+Compiling alt_dma_txchan_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dma_txchan_open.o HAL/src/alt_dma_txchan_open.c
+Compiling alt_do_ctors.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_do_ctors.o HAL/src/alt_do_ctors.c
+Compiling alt_do_dtors.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_do_dtors.o HAL/src/alt_do_dtors.c
+Compiling alt_ecc_fatal_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_ecc_fatal_entry.o HAL/src/alt_ecc_fatal_entry.S
+Compiling alt_ecc_fatal_exception.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_ecc_fatal_exception.o HAL/src/alt_ecc_fatal_exception.c
+Compiling alt_env_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_env_lock.o HAL/src/alt_env_lock.c
+Compiling alt_environ.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_environ.o HAL/src/alt_environ.c
+Compiling alt_errno.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_errno.o HAL/src/alt_errno.c
+Compiling alt_exception_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_entry.o HAL/src/alt_exception_entry.S
+Compiling alt_exception_muldiv.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_muldiv.o HAL/src/alt_exception_muldiv.S
+Compiling alt_exception_trap.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_trap.o HAL/src/alt_exception_trap.S
+Compiling alt_execve.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_execve.o HAL/src/alt_execve.c
+Compiling alt_exit.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_exit.o HAL/src/alt_exit.c
+Compiling alt_fcntl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fcntl.o HAL/src/alt_fcntl.c
+Compiling alt_fd_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fd_lock.o HAL/src/alt_fd_lock.c
+Compiling alt_fd_unlock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fd_unlock.o HAL/src/alt_fd_unlock.c
+Compiling alt_find_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_find_dev.o HAL/src/alt_find_dev.c
+Compiling alt_find_file.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_find_file.o HAL/src/alt_find_file.c
+Compiling alt_flash_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_flash_dev.o HAL/src/alt_flash_dev.c
+Compiling alt_fork.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fork.o HAL/src/alt_fork.c
+Compiling alt_fs_reg.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fs_reg.o HAL/src/alt_fs_reg.c
+Compiling alt_fstat.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fstat.o HAL/src/alt_fstat.c
+Compiling alt_get_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_get_fd.o HAL/src/alt_get_fd.c
+Compiling alt_getchar.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_getchar.o HAL/src/alt_getchar.c
+Compiling alt_getpid.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_getpid.o HAL/src/alt_getpid.c
+Compiling alt_gettod.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_gettod.o HAL/src/alt_gettod.c
+Compiling alt_gmon.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_gmon.o HAL/src/alt_gmon.c
+Compiling alt_icache_flush.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_icache_flush.o HAL/src/alt_icache_flush.c
+Compiling alt_icache_flush_all.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_icache_flush_all.o HAL/src/alt_icache_flush_all.c
+Compiling alt_iic.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_iic.o HAL/src/alt_iic.c
+Compiling alt_iic_isr_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_iic_isr_register.o HAL/src/alt_iic_isr_register.c
+Compiling alt_instruction_exception_entry.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_instruction_exception_entry.o HAL/src/alt_instruction_exception_entry.c
+Compiling alt_instruction_exception_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_instruction_exception_register.o HAL/src/alt_instruction_exception_register.c
+Compiling alt_io_redirect.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_io_redirect.o HAL/src/alt_io_redirect.c
+Compiling alt_ioctl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_ioctl.o HAL/src/alt_ioctl.c
+Compiling alt_irq_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_irq_entry.o HAL/src/alt_irq_entry.S
+Compiling alt_irq_handler.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_handler.o HAL/src/alt_irq_handler.c
+Compiling alt_irq_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_register.o HAL/src/alt_irq_register.c
+Compiling alt_irq_vars.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_vars.o HAL/src/alt_irq_vars.c
+Compiling alt_isatty.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_isatty.o HAL/src/alt_isatty.c
+Compiling alt_kill.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_kill.o HAL/src/alt_kill.c
+Compiling alt_link.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_link.o HAL/src/alt_link.c
+Compiling alt_load.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_load.o HAL/src/alt_load.c
+Compiling alt_log_macro.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_log_macro.o HAL/src/alt_log_macro.S
+Compiling alt_log_printf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_log_printf.o HAL/src/alt_log_printf.c
+Compiling alt_lseek.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_lseek.o HAL/src/alt_lseek.c
+Compiling alt_main.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_main.o HAL/src/alt_main.c
+Compiling alt_malloc_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_malloc_lock.o HAL/src/alt_malloc_lock.c
+Compiling alt_mcount.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_mcount.o HAL/src/alt_mcount.S
+Compiling alt_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_open.o HAL/src/alt_open.c
+Compiling alt_printf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_printf.o HAL/src/alt_printf.c
+Compiling alt_putchar.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putchar.o HAL/src/alt_putchar.c
+Compiling alt_putcharbuf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putcharbuf.o HAL/src/alt_putcharbuf.c
+Compiling alt_putstr.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putstr.o HAL/src/alt_putstr.c
+Compiling alt_read.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_read.o HAL/src/alt_read.c
+Compiling alt_release_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_release_fd.o HAL/src/alt_release_fd.c
+Compiling alt_remap_cached.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_remap_cached.o HAL/src/alt_remap_cached.c
+Compiling alt_remap_uncached.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_remap_uncached.o HAL/src/alt_remap_uncached.c
+Compiling alt_rename.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_rename.o HAL/src/alt_rename.c
+Compiling alt_sbrk.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_sbrk.o HAL/src/alt_sbrk.c
+Compiling alt_settod.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_settod.o HAL/src/alt_settod.c
+Compiling alt_software_exception.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_software_exception.o HAL/src/alt_software_exception.S
+Compiling alt_stat.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_stat.o HAL/src/alt_stat.c
+Compiling alt_tick.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_tick.o HAL/src/alt_tick.c
+Compiling alt_times.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_times.o HAL/src/alt_times.c
+Compiling alt_uncached_free.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_uncached_free.o HAL/src/alt_uncached_free.c
+Compiling alt_uncached_malloc.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_uncached_malloc.o HAL/src/alt_uncached_malloc.c
+Compiling alt_unlink.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_unlink.o HAL/src/alt_unlink.c
+Compiling alt_usleep.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_usleep.o HAL/src/alt_usleep.c
+Compiling alt_wait.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_wait.o HAL/src/alt_wait.c
+Compiling alt_write.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_write.o HAL/src/alt_write.c
+Compiling altera_nios2_gen2_irq.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/altera_nios2_gen2_irq.o HAL/src/altera_nios2_gen2_irq.c
+Compiling crt0.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/crt0.o HAL/src/crt0.S
+Compiling alt_sys_init.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/alt_sys_init.o alt_sys_init.c
+Compiling altera_avalon_jtag_uart_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_fd.o drivers/src/altera_avalon_jtag_uart_fd.c
+Compiling altera_avalon_jtag_uart_init.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_init.o drivers/src/altera_avalon_jtag_uart_init.c
+Compiling altera_avalon_jtag_uart_ioctl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o drivers/src/altera_avalon_jtag_uart_ioctl.c
+Compiling altera_avalon_jtag_uart_read.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_read.o drivers/src/altera_avalon_jtag_uart_read.c
+Compiling altera_avalon_jtag_uart_write.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_write.o drivers/src/altera_avalon_jtag_uart_write.c
+Compiling altera_avalon_spi.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_spi.o drivers/src/altera_avalon_spi.c
+Compiling altera_avalon_timer_sc.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_sc.o drivers/src/altera_avalon_timer_sc.c
+Compiling altera_avalon_timer_ts.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_ts.o drivers/src/altera_avalon_timer_ts.c
+Compiling altera_avalon_timer_vars.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_vars.o drivers/src/altera_avalon_timer_vars.c
+Creating libhal_bsp.a...
+rm -f -f libhal_bsp.a
+nios2-elf-ar -src libhal_bsp.a obj/HAL/src/alt_alarm_start.o obj/HAL/src/alt_busy_sleep.o obj/HAL/src/alt_close.o obj/HAL/src/alt_dcache_flush.o obj/HAL/src/alt_dcache_flush_all.o obj/HAL/src/alt_dcache_flush_no_writeback.o obj/HAL/src/alt_dev.o obj/HAL/src/alt_dev_llist_insert.o obj/HAL/src/alt_dma_rxchan_open.o obj/HAL/src/alt_dma_txchan_open.o obj/HAL/src/alt_do_ctors.o obj/HAL/src/alt_do_dtors.o obj/HAL/src/alt_ecc_fatal_entry.o obj/HAL/src/alt_ecc_fatal_exception.o obj/HAL/src/alt_env_lock.o obj/HAL/src/alt_environ.o obj/HAL/src/alt_errno.o obj/HAL/src/alt_exception_entry.o obj/HAL/src/alt_exception_muldiv.o obj/HAL/src/alt_exception_trap.o obj/HAL/src/alt_execve.o obj/HAL/src/alt_exit.o obj/HAL/src/alt_fcntl.o obj/HAL/src/alt_fd_lock.o obj/HAL/src/alt_fd_unlock.o obj/HAL/src/alt_find_dev.o obj/HAL/src/alt_find_file.o obj/HAL/src/alt_flash_dev.o obj/HAL/src/alt_fork.o obj/HAL/src/alt_fs_reg.o obj/HAL/src/alt_fstat.o obj/HAL/src/alt_get_fd.o obj/HAL/src/alt_getchar.o obj/HAL/src/alt_getpid.o obj/HAL/src/alt_gettod.o obj/HAL/src/alt_gmon.o obj/HAL/src/alt_icache_flush.o obj/HAL/src/alt_icache_flush_all.o obj/HAL/src/alt_iic.o obj/HAL/src/alt_iic_isr_register.o obj/HAL/src/alt_instruction_exception_entry.o obj/HAL/src/alt_instruction_exception_register.o obj/HAL/src/alt_io_redirect.o obj/HAL/src/alt_ioctl.o obj/HAL/src/alt_irq_entry.o obj/HAL/src/alt_irq_handler.o obj/HAL/src/alt_irq_register.o obj/HAL/src/alt_irq_vars.o obj/HAL/src/alt_isatty.o obj/HAL/src/alt_kill.o obj/HAL/src/alt_link.o obj/HAL/src/alt_load.o obj/HAL/src/alt_log_macro.o obj/HAL/src/alt_log_printf.o obj/HAL/src/alt_lseek.o obj/HAL/src/alt_main.o obj/HAL/src/alt_malloc_lock.o obj/HAL/src/alt_mcount.o obj/HAL/src/alt_open.o obj/HAL/src/alt_printf.o obj/HAL/src/alt_putchar.o obj/HAL/src/alt_putcharbuf.o obj/HAL/src/alt_putstr.o obj/HAL/src/alt_read.o obj/HAL/src/alt_release_fd.o obj/HAL/src/alt_remap_cached.o obj/HAL/src/alt_remap_uncached.o obj/HAL/src/alt_rename.o obj/HAL/src/alt_sbrk.o obj/HAL/src/alt_settod.o obj/HAL/src/alt_software_exception.o obj/HAL/src/alt_stat.o obj/HAL/src/alt_tick.o obj/HAL/src/alt_times.o obj/HAL/src/alt_uncached_free.o obj/HAL/src/alt_uncached_malloc.o obj/HAL/src/alt_unlink.o obj/HAL/src/alt_usleep.o obj/HAL/src/alt_wait.o obj/HAL/src/alt_write.o obj/HAL/src/altera_nios2_gen2_irq.o obj/HAL/src/crt0.o obj/alt_sys_init.o obj/drivers/src/altera_avalon_jtag_uart_fd.o obj/drivers/src/altera_avalon_jtag_uart_init.o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o obj/drivers/src/altera_avalon_jtag_uart_read.o obj/drivers/src/altera_avalon_jtag_uart_write.o obj/drivers/src/altera_avalon_spi.o obj/drivers/src/altera_avalon_timer_sc.o obj/drivers/src/altera_avalon_timer_ts.o obj/drivers/src/altera_avalon_timer_vars.o
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    2212 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:16:52 **** Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:18:36 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:19:34 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:19:35 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:28:58 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:28:59 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:32:41 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:34:11 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:34:13 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:37:31 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1592 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:37:33 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:37:36 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:38:45 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:25:15: warning: unused variable 'state_var' [-Wunused-variable]
+  unsigned int state_var; 
+               ^
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 28 KBytes program size (code + initialized data).
+Info:                    1592 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:39:31 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:32:4: error: 'PIO_INPUT' undeclared (first use in this function)
+    PIO_INPUT = (*(int*)PIO_BASE);
+    ^
+graphic_top.c:32:4: note: each undeclared identifier is reported only once for each function it appears in
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+22:39:32 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:40:32 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    976 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:40:34 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:40:44 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:48:01 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    964 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:48:03 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:48:09 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:48:53 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    960 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+22:48:55 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:48:58 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+22:57:44 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+22:57:46 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:57:56 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+22:58:12 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+22:58:13 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:58:32 **** Clean-only build of configuration Nios II for project processor_v2 ****
+make clean 
+[processor_v2 clean complete]
+22:58:32 **** Clean-only build of configuration Nios II for project processor_v2_bsp ****
+make clean 
+[BSP clean complete]
+22:58:33 **** Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+Compiling alt_alarm_start.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_alarm_start.o HAL/src/alt_alarm_start.c
+Compiling alt_busy_sleep.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_busy_sleep.o HAL/src/alt_busy_sleep.c
+Compiling alt_close.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_close.o HAL/src/alt_close.c
+Compiling alt_dcache_flush.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush.o HAL/src/alt_dcache_flush.c
+Compiling alt_dcache_flush_all.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush_all.o HAL/src/alt_dcache_flush_all.c
+Compiling alt_dcache_flush_no_writeback.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dcache_flush_no_writeback.o HAL/src/alt_dcache_flush_no_writeback.c
+Compiling alt_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dev.o HAL/src/alt_dev.c
+Compiling alt_dev_llist_insert.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dev_llist_insert.o HAL/src/alt_dev_llist_insert.c
+Compiling alt_dma_rxchan_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dma_rxchan_open.o HAL/src/alt_dma_rxchan_open.c
+Compiling alt_dma_txchan_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_dma_txchan_open.o HAL/src/alt_dma_txchan_open.c
+Compiling alt_do_ctors.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_do_ctors.o HAL/src/alt_do_ctors.c
+Compiling alt_do_dtors.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_do_dtors.o HAL/src/alt_do_dtors.c
+Compiling alt_ecc_fatal_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_ecc_fatal_entry.o HAL/src/alt_ecc_fatal_entry.S
+Compiling alt_ecc_fatal_exception.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_ecc_fatal_exception.o HAL/src/alt_ecc_fatal_exception.c
+Compiling alt_env_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_env_lock.o HAL/src/alt_env_lock.c
+Compiling alt_environ.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_environ.o HAL/src/alt_environ.c
+Compiling alt_errno.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_errno.o HAL/src/alt_errno.c
+Compiling alt_exception_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_entry.o HAL/src/alt_exception_entry.S
+Compiling alt_exception_muldiv.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_muldiv.o HAL/src/alt_exception_muldiv.S
+Compiling alt_exception_trap.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_exception_trap.o HAL/src/alt_exception_trap.S
+Compiling alt_execve.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_execve.o HAL/src/alt_execve.c
+Compiling alt_exit.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_exit.o HAL/src/alt_exit.c
+Compiling alt_fcntl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fcntl.o HAL/src/alt_fcntl.c
+Compiling alt_fd_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fd_lock.o HAL/src/alt_fd_lock.c
+Compiling alt_fd_unlock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fd_unlock.o HAL/src/alt_fd_unlock.c
+Compiling alt_find_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_find_dev.o HAL/src/alt_find_dev.c
+Compiling alt_find_file.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_find_file.o HAL/src/alt_find_file.c
+Compiling alt_flash_dev.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_flash_dev.o HAL/src/alt_flash_dev.c
+Compiling alt_fork.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fork.o HAL/src/alt_fork.c
+Compiling alt_fs_reg.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fs_reg.o HAL/src/alt_fs_reg.c
+Compiling alt_fstat.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_fstat.o HAL/src/alt_fstat.c
+Compiling alt_get_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_get_fd.o HAL/src/alt_get_fd.c
+Compiling alt_getchar.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_getchar.o HAL/src/alt_getchar.c
+Compiling alt_getpid.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_getpid.o HAL/src/alt_getpid.c
+Compiling alt_gettod.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_gettod.o HAL/src/alt_gettod.c
+Compiling alt_gmon.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_gmon.o HAL/src/alt_gmon.c
+Compiling alt_icache_flush.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_icache_flush.o HAL/src/alt_icache_flush.c
+Compiling alt_icache_flush_all.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_icache_flush_all.o HAL/src/alt_icache_flush_all.c
+Compiling alt_iic.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_iic.o HAL/src/alt_iic.c
+Compiling alt_iic_isr_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_iic_isr_register.o HAL/src/alt_iic_isr_register.c
+Compiling alt_instruction_exception_entry.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_instruction_exception_entry.o HAL/src/alt_instruction_exception_entry.c
+Compiling alt_instruction_exception_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_instruction_exception_register.o HAL/src/alt_instruction_exception_register.c
+Compiling alt_io_redirect.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_io_redirect.o HAL/src/alt_io_redirect.c
+Compiling alt_ioctl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_ioctl.o HAL/src/alt_ioctl.c
+Compiling alt_irq_entry.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_irq_entry.o HAL/src/alt_irq_entry.S
+Compiling alt_irq_handler.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_handler.o HAL/src/alt_irq_handler.c
+Compiling alt_irq_register.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_register.o HAL/src/alt_irq_register.c
+Compiling alt_irq_vars.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_irq_vars.o HAL/src/alt_irq_vars.c
+Compiling alt_isatty.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_isatty.o HAL/src/alt_isatty.c
+Compiling alt_kill.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_kill.o HAL/src/alt_kill.c
+Compiling alt_link.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_link.o HAL/src/alt_link.c
+Compiling alt_load.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_load.o HAL/src/alt_load.c
+Compiling alt_log_macro.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_log_macro.o HAL/src/alt_log_macro.S
+Compiling alt_log_printf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_log_printf.o HAL/src/alt_log_printf.c
+Compiling alt_lseek.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_lseek.o HAL/src/alt_lseek.c
+Compiling alt_main.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_main.o HAL/src/alt_main.c
+Compiling alt_malloc_lock.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_malloc_lock.o HAL/src/alt_malloc_lock.c
+Compiling alt_mcount.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_mcount.o HAL/src/alt_mcount.S
+Compiling alt_open.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_open.o HAL/src/alt_open.c
+Compiling alt_printf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_printf.o HAL/src/alt_printf.c
+Compiling alt_putchar.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putchar.o HAL/src/alt_putchar.c
+Compiling alt_putcharbuf.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putcharbuf.o HAL/src/alt_putcharbuf.c
+Compiling alt_putstr.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_putstr.o HAL/src/alt_putstr.c
+Compiling alt_read.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_read.o HAL/src/alt_read.c
+Compiling alt_release_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_release_fd.o HAL/src/alt_release_fd.c
+Compiling alt_remap_cached.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_remap_cached.o HAL/src/alt_remap_cached.c
+Compiling alt_remap_uncached.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_remap_uncached.o HAL/src/alt_remap_uncached.c
+Compiling alt_rename.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_rename.o HAL/src/alt_rename.c
+Compiling alt_sbrk.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_sbrk.o HAL/src/alt_sbrk.c
+Compiling alt_settod.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_settod.o HAL/src/alt_settod.c
+Compiling alt_software_exception.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/alt_software_exception.o HAL/src/alt_software_exception.S
+Compiling alt_stat.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_stat.o HAL/src/alt_stat.c
+Compiling alt_tick.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_tick.o HAL/src/alt_tick.c
+Compiling alt_times.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_times.o HAL/src/alt_times.c
+Compiling alt_uncached_free.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_uncached_free.o HAL/src/alt_uncached_free.c
+Compiling alt_uncached_malloc.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_uncached_malloc.o HAL/src/alt_uncached_malloc.c
+Compiling alt_unlink.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_unlink.o HAL/src/alt_unlink.c
+Compiling alt_usleep.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_usleep.o HAL/src/alt_usleep.c
+Compiling alt_wait.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_wait.o HAL/src/alt_wait.c
+Compiling alt_write.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/alt_write.o HAL/src/alt_write.c
+Compiling altera_nios2_gen2_irq.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/HAL/src/altera_nios2_gen2_irq.o HAL/src/altera_nios2_gen2_irq.c
+Compiling crt0.S...
+nios2-elf-gcc -MP -MMD -c   -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global    -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED  -Wa,-gdwarf2  -o obj/HAL/src/crt0.o HAL/src/crt0.S
+Compiling alt_sys_init.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/alt_sys_init.o alt_sys_init.c
+Compiling altera_avalon_jtag_uart_fd.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_fd.o drivers/src/altera_avalon_jtag_uart_fd.c
+Compiling altera_avalon_jtag_uart_init.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_init.o drivers/src/altera_avalon_jtag_uart_init.c
+Compiling altera_avalon_jtag_uart_ioctl.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o drivers/src/altera_avalon_jtag_uart_ioctl.c
+Compiling altera_avalon_jtag_uart_read.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_read.o drivers/src/altera_avalon_jtag_uart_read.c
+Compiling altera_avalon_jtag_uart_write.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_jtag_uart_write.o drivers/src/altera_avalon_jtag_uart_write.c
+Compiling altera_avalon_spi.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_spi.o drivers/src/altera_avalon_spi.c
+Compiling altera_avalon_timer_sc.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_sc.o drivers/src/altera_avalon_timer_sc.c
+Compiling altera_avalon_timer_ts.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_ts.o drivers/src/altera_avalon_timer_ts.c
+Compiling altera_avalon_timer_vars.c...
+nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global   -o obj/drivers/src/altera_avalon_timer_vars.o drivers/src/altera_avalon_timer_vars.c
+Creating libhal_bsp.a...
+rm -f -f libhal_bsp.a
+nios2-elf-ar -src libhal_bsp.a obj/HAL/src/alt_alarm_start.o obj/HAL/src/alt_busy_sleep.o obj/HAL/src/alt_close.o obj/HAL/src/alt_dcache_flush.o obj/HAL/src/alt_dcache_flush_all.o obj/HAL/src/alt_dcache_flush_no_writeback.o obj/HAL/src/alt_dev.o obj/HAL/src/alt_dev_llist_insert.o obj/HAL/src/alt_dma_rxchan_open.o obj/HAL/src/alt_dma_txchan_open.o obj/HAL/src/alt_do_ctors.o obj/HAL/src/alt_do_dtors.o obj/HAL/src/alt_ecc_fatal_entry.o obj/HAL/src/alt_ecc_fatal_exception.o obj/HAL/src/alt_env_lock.o obj/HAL/src/alt_environ.o obj/HAL/src/alt_errno.o obj/HAL/src/alt_exception_entry.o obj/HAL/src/alt_exception_muldiv.o obj/HAL/src/alt_exception_trap.o obj/HAL/src/alt_execve.o obj/HAL/src/alt_exit.o obj/HAL/src/alt_fcntl.o obj/HAL/src/alt_fd_lock.o obj/HAL/src/alt_fd_unlock.o obj/HAL/src/alt_find_dev.o obj/HAL/src/alt_find_file.o obj/HAL/src/alt_flash_dev.o obj/HAL/src/alt_fork.o obj/HAL/src/alt_fs_reg.o obj/HAL/src/alt_fstat.o obj/HAL/src/alt_get_fd.o obj/HAL/src/alt_getchar.o obj/HAL/src/alt_getpid.o obj/HAL/src/alt_gettod.o obj/HAL/src/alt_gmon.o obj/HAL/src/alt_icache_flush.o obj/HAL/src/alt_icache_flush_all.o obj/HAL/src/alt_iic.o obj/HAL/src/alt_iic_isr_register.o obj/HAL/src/alt_instruction_exception_entry.o obj/HAL/src/alt_instruction_exception_register.o obj/HAL/src/alt_io_redirect.o obj/HAL/src/alt_ioctl.o obj/HAL/src/alt_irq_entry.o obj/HAL/src/alt_irq_handler.o obj/HAL/src/alt_irq_register.o obj/HAL/src/alt_irq_vars.o obj/HAL/src/alt_isatty.o obj/HAL/src/alt_kill.o obj/HAL/src/alt_link.o obj/HAL/src/alt_load.o obj/HAL/src/alt_log_macro.o obj/HAL/src/alt_log_printf.o obj/HAL/src/alt_lseek.o obj/HAL/src/alt_main.o obj/HAL/src/alt_malloc_lock.o obj/HAL/src/alt_mcount.o obj/HAL/src/alt_open.o obj/HAL/src/alt_printf.o obj/HAL/src/alt_putchar.o obj/HAL/src/alt_putcharbuf.o obj/HAL/src/alt_putstr.o obj/HAL/src/alt_read.o obj/HAL/src/alt_release_fd.o obj/HAL/src/alt_remap_cached.o obj/HAL/src/alt_remap_uncached.o obj/HAL/src/alt_rename.o obj/HAL/src/alt_sbrk.o obj/HAL/src/alt_settod.o obj/HAL/src/alt_software_exception.o obj/HAL/src/alt_stat.o obj/HAL/src/alt_tick.o obj/HAL/src/alt_times.o obj/HAL/src/alt_uncached_free.o obj/HAL/src/alt_uncached_malloc.o obj/HAL/src/alt_unlink.o obj/HAL/src/alt_usleep.o obj/HAL/src/alt_wait.o obj/HAL/src/alt_write.o obj/HAL/src/altera_nios2_gen2_irq.o obj/HAL/src/crt0.o obj/alt_sys_init.o obj/drivers/src/altera_avalon_jtag_uart_fd.o obj/drivers/src/altera_avalon_jtag_uart_init.o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o obj/drivers/src/altera_avalon_jtag_uart_read.o obj/drivers/src/altera_avalon_jtag_uart_write.o obj/drivers/src/altera_avalon_spi.o obj/drivers/src/altera_avalon_timer_sc.o obj/drivers/src/altera_avalon_timer_ts.o obj/drivers/src/altera_avalon_timer_vars.o
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x205e4 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd90 of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+22:58:47 **** Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+22:59:46 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x203c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2db6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x203c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2db6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+22:59:47 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:00:29 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x203c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2db6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x203c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2db6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:00:30 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:02:03 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1172 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+23:02:05 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:03:21 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:03:22 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:03:33 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:03:34 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:03:37 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:03:38 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:04:23 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:04:24 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:04:39 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x1d3c0 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x27b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:04:40 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:04:58 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:05:00 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:05:37 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1164 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+23:05:40 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:06:08 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x21b6c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:06:10 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:06:37 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:24:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1172 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+23:06:40 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:07:18 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+[processor_v2 build complete]
+23:07:19 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:07:57 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+nios2-elf-insert processor_v2.elf --thread_model hal --cpu_name processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name processor --quartus_project_dir "C:/Users/retge/Documents/git_repo/elex7660_Project" --jdi ../..//output_files/elex7660_Project.jdi --sopcinfo C:/Users/retge/Documents/git_repo/elex7660_Project/software/processor_v2_bsp/../../processor.sopcinfo
+Info: (processor_v2.elf) 29 KBytes program size (code + initialized data).
+Info:                    1172 Bytes free for stack + heap.
+Info: Creating processor_v2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source processor_v2.elf >processor_v2.objdump
+[processor_v2 build complete]
+23:07:59 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:10:18 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20574 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd20 of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20574 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2dd20 of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:10:20 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:11:11 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:99:6: error: unknown type name 'VICTORY'
+      VICTORY SCREEN
+      ^
+graphic_top.c:100:5: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'break'
+     break;
+     ^
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+23:11:12 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:11:19 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:11:20 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:13:04 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:13:05 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:13:21 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:95:49: error: 'victory_frame' undeclared (first use in this function)
+       alt_avalon_spi_command(SPI_0_BASE, 0, 1, &victory_frame[(y*IMAGE_WIDTH+x)*BYTES_PER_PIXEL], 0, NULL, 0 ) ;
+                                                 ^
+graphic_top.c:95:49: note: each undeclared identifier is reported only once for each function it appears in
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+make: *** [obj/default/graphic_top.o] Error 1
+23:13:22 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:13:42 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:13:43 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:14:33 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:14:34 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]
+23:15:25 **** Incremental Build of configuration Nios II for project processor_v2 ****
+make all 
+Info: Building ../processor_v2_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../processor_v2_bsp/
+[BSP build complete]
+Info: Compiling graphic_top.c to obj/default/graphic_top.o
+nios2-elf-gcc -xc -MP -MMD -c -I../processor_v2_bsp//HAL/inc -I../processor_v2_bsp/ -I../processor_v2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphic_top.o graphic_top.c
+graphic_top.c: In function 'main':
+graphic_top.c:27:16: warning: unused variable 'data' [-Wunused-variable]
+  unsigned char data;  // temporary storage of byte to be sent to display
+                ^
+Info: Linking processor_v2.elf
+nios2-elf-g++  -T'../processor_v2_bsp//linker.x' -msys-crt0='../processor_v2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../processor_v2_bsp/   -Wl,-Map=processor_v2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o processor_v2.elf obj/default/graphic_top.o -lm -msys-lib=m
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x20670 of processor_v2.elf section `.rwdata' is not within region `memory'
+c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2de1c of processor_v2.elf section `.bss' is not within region `memory'
+collect2.exe: error: ld returned 1 exit status
+make: *** [processor_v2.elf] Error 1
+23:15:27 **** Incremental Build of configuration Nios II for project processor_v2_bsp ****
+make all 
+[BSP build complete]

@@ -35,7 +35,7 @@ module bankVault (
               input logic  reset_n, 
               
               //OLED Controls
-              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_resS				 
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res				 
 ) ;
 
   logic clk ;               // clock
@@ -62,7 +62,7 @@ module bankVault (
   
   //Toggles the channel on the ADC to alternate sampling X and Y axis
    always_ff @(posedge clk ) begin
-    adc_chan[3:1] = 0;
+
     if ((adc_chan == `X_CHANNEL) && ADC_CONVST) begin      
       //Store Value
       adc_x_value = adcValue; 
@@ -96,8 +96,8 @@ module bankVault (
   assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
 
   // State Variables
-  logic [7:0] current_state;
-  logic [7:0] next_state;  
+  logic [2:0] current_state;
+  logic [2:0] next_state;  
 
   // System States
   localparam [2:0]
@@ -124,15 +124,16 @@ module bankVault (
 
     // enable the 7-segment module for the selected digit
 
-	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+	assign ct =  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
 
     // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-        2 : displayNum <= rgb_input[31:28] ;
-        1 : displayNum <= rgb_input[27:24] ;
-        0 : displayNum <= rgb_input[23:20] ;
+
+        2 : displayNum <= current_state ;
+        1 : displayNum <= adc_x_value[7:4] ;
+        0 : displayNum <= adc_x_value[3:0] ;
 		default: 
            displayNum = 'hf ; 
     endcase
@@ -148,14 +149,14 @@ module bankVault (
 	logic [3:0] x_pos;
 	logic [3:0] y_pos;
 	
-	assign x_pos = (adc_x_value > 12'h700) ? 1111 : 0000; //check for quadrant
-	assign y_pos = (adc_y_value > 12'h700) ? 1111 : 0000;
+	assign x_pos = (adc_x_value > 12'h700) ? 1100 : 0011; //check for quadrant
+	assign y_pos = (adc_y_value > 12'h700) ? 1100 : 0011;
 	
 	assign start_string 		= { 28'b0, current_state, rgb_output[0]};
-	assign game_1_string		= {  4'b0, x_pos, 4'b000, y_pos, 12'b0, current_state, rgb_output[0]};
+	assign game_1_string		= {  4'b0, x_pos, 4'b0110, y_pos, 12'b0, current_state, rgb_output[0]};
 	assign game_2_string		= { 28'b0, current_state, rgb_output[0]};
 	assign game_3_string		= { 28'b0, current_state, rgb_output[0]};
-	assign victory_string	= { 28'b0, current_state, rgb_output[0]};
+	assign victory_string	= { 28'hbadc0c0, current_state, rgb_output[0]};
 
 
 /* State 	: Desc
@@ -174,69 +175,65 @@ module bankVault (
 	
 	
   always_comb begin : state_logic
-
-    current_state <= next_state;
+	
+    
     unique case (current_state)  
       start_up  : begin
-                    rgb_input <= start_string;
+							rgb_input <= start_string;
+						  current_state <= next_state;
+						  
                   end
 						
       game_1    : begin
-                    rgb_input <= game_1_string;
+							rgb_input <= game_1_string;
+						   current_state <= next_state;
 						      end
-						
+							
       game_2    :	begin
-                    rgb_input <= game_2_string;
+							rgb_input <= game_2_string;
+						  current_state <= next_state;
 						      end
 						
       game_3    :	begin
-                    rgb_input <= game_3_string;
-						      end
+							rgb_input <= game_3_string;
+						  current_state <= next_state;   
+							  end
 						
       victory   :	begin  
-                      rgb_input <= victory_string;
-						      end
+							rgb_input <= victory_string;
+						    current_state <= next_state;  
+								end
       
       default : begin
 			rgb_input <= 32'hbadc0c0a;
+			current_state <= next_state;
       end
       
     endcase
   end : state_logic
 
-
-  // Handles state change in reponse to state logic 
-  // Currently just loops through the states
+  //in debug mode so a keypress will move to the next state
   always_ff @( posedge clk, negedge reset_n ) begin : state_handler
     if(~reset_n)
       next_state <= start_up;
     else begin
+      case (current_state)
 
-      if(current_state == (start_up  && (kpNum == 1))) begin
-        next_state <= game_1;
-      end
+        start_up  : next_state = (kpNum == 1) ? game_1 : current_state;
 
-      else if(current_state == (game_1 && (kpNum == 2))) begin
-        next_state <= game_2;
-      end      
+        game_1    : next_state = (kpNum == 2) ? game_2 : current_state;
 
-      else if(current_state == (game_2 && (kpNum == 3))) begin
-        next_state <= game_3;
-      end
+        game_2    : next_state = (kpNum == 3) ? game_3 : current_state;
 
-      else if(current_state == (game_3 && (kpNum == 4))) begin
-        next_state <= victory;
-      end
-
-      else if(current_state == victory) begin
-        next_state <= current_state;
-      end
-
-      else begin
-        next_state <= start_up;
-      end
+        game_3    : next_state = (kpNum == 4) ? victory : current_state;
+        
+        victory   : next_state = (kpNum == 5) ? start_up : current_state;
+       
+        default: begin
+          next_state <= start_up;
+        end
+      endcase
     end
-
   end : state_handler
    
 endmodule

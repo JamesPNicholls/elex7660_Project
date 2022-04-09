@@ -4,6 +4,10 @@
 #define WIDTH   0x60
 #define HEIGHT  0x40
 
+#define IMAGE_HEIGHT 64
+#define IMAGE_WIDTH 96
+#define BYTES_PER_PIXEL 2
+
 //Masks
 #define DCN_MASK            0x00000001
 #define ADC_VALUE_MASK      0x00000FFF // get the 12 MSB's, [31:20] 
@@ -11,7 +15,7 @@
 #define ADC_X_COEFF         33 // convery ADC raw value to pixel position
 #define ADC_Y_COEFF         49 //
 
-#define STATE_MASK          0x0000000E // State mask
+#define STATE_MASK          0x00000007 // State mask
 #define VALID_MASK          0x000000F0 // 
 
 // Stuff for spi_commnds
@@ -25,9 +29,9 @@
 #define SET_DCN (*(int*)PIO_BASE)   = (*(int*)PIO_BASE) | DCN_MASK;
 #define CLEAR_DCN (*(int*)PIO_BASE) = (*(int*)PIO_BASE) & ~DCN_MASK;
 
-enum state{start_up = 0 , game_1 = 2, game_2=4, game_3=6, victory = 8, error = 0xe};
+enum state{start_up = 0 , game_1 = 1, game_2 = 2, game_3 = 3, victory = 4, error = 7};
 
-unsigned char draw_data[DRAW_SIZE] = {DRAW_COM, 0, 0, WIDTH, HEIGHT, 0, 0, 0, 0, 0, 0 };
+unsigned char draw_data[DRAW_SIZE] = {DRAW_COM, 10, 10, WIDTH-10, HEIGHT-10, 0, 0, 0, 0, 0, 0 };
 
 /* Non cursor functions*/
 void clear_screen()
@@ -59,7 +63,7 @@ void checkvalid()
 void frame_delay()
 {
     clock_t start_time = clock();
-    while( clock() < (start_time + (int)10));   
+    while( clock() < (start_time + (int)1));
     return;
 }
 

@@ -5,7 +5,7 @@
 <stringAttribute key="byteStreamDeviceCableName" value="DE-SoC on localhost [USB-1]"/>
 <stringAttribute key="byteStreamDeviceDeviceID" value="2"/>
 <stringAttribute key="byteStreamDeviceInstanceID" value="0"/>
-<stringAttribute key="com.altera.sbtgui.launch.REMOTE_PORT" value="59807"/>
+<stringAttribute key="com.altera.sbtgui.launch.REMOTE_PORT" value="50947"/>
 <booleanAttribute key="downloadProgram" value="true"/>
 <stringAttribute key="elfFile" value="C:\Users\retge\Documents\git_repo\elex7660_Project\software\processor_v2\processor_v2.elf"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=""/>
