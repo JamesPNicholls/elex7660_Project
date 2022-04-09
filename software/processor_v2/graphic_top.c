@@ -20,18 +20,6 @@ unsigned char initdata[INITDATA_SIZE] = { 0xAE, 0x81, 0xFF, 0x82, 0xFF, 0x83, 0x
 
 int main()
 {
-	//initialize cursor object
-	struct cursor sCursor = {
-		0,0,5, // xpos,ypos, size
-		0xff, //f colour
-		0x00, //l colour
-		//draw_data
-		{DRAW_COM, sCursor.x_pos, sCursor.y_pos, sCursor.x_pos + sCursor.size, sCursor.y_pos+sCursor.size,
-		sCursor.f_colour, 0, 0, sCursor.l_colour,  sCursor.l_colour, sCursor.l_colour},
-		//clear_data
-		{CLEAR_COM, sCursor.x_pos, sCursor.y_pos, sCursor.x_pos + sCursor.size, sCursor.y_pos+sCursor.size},//clear
-	};		
-
 	int x, y ; // array indices used to access pixel data in image arra
 	unsigned char data;  // temporary storage of byte to be sent to display
 
@@ -41,9 +29,6 @@ int main()
 
 	while(1)
 	{		
-
-		clear_screen();
-		check_valid();			
 		switch ((*(int*)PIO_BASE) & STATE_MASK)
 		{
 		case start_up   : 
@@ -60,21 +45,45 @@ int main()
 			break;
 
 		case game_1		:
-			cursor_get_pos( &sCursor, (*(int*)PIO_BASE));
+			clear_screen();
+			draw_data[5]  = 0x40;
+			draw_data[8]  = 0x40;
+			alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+			
 			// Fill with colour 
 			// Print Code
 			break;
-		case game_2		:		
+
+		case game_2		:	
+			clear_screen();
+			draw_data[6]  = 0x40;
+			draw_data[9]  = 0x40;
+			alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);	
+			
 			// print code
 			// print pass or error
 			break;
+
 		case game_3		:
+			clear_screen();
+			draw_data[7]  = 0x40;
+			draw_data[10]  = 0x40;
+			alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
 
 			// PRINK SPANK ME HARDERs
-			break;	
+			break;			
 		
 		case victory:
+			clear_screen();
+			draw_data[5]    = 0xff;
+			draw_data[6]    = 0xff;
+			draw_data[7]    = 0xff;
+			draw_data[8]    = 0xff;
+			draw_data[9]    = 0xff;
+			draw_data[10]   = 0xff;
+			alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
 			// VICTORY SCREEN
+			break;
 		default:
 			break;
 		}		

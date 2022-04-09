@@ -35,9 +35,7 @@ module bankVault (
               input logic  reset_n, 
               
               //OLED Controls
-              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res
-
-				 
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_resS				 
 ) ;
 
   logic clk ;               // clock
@@ -63,7 +61,19 @@ module bankVault (
   adcinterface adcinterface_X(  .clk, .reset_n,  .chan(adc_chan), .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
   
   //Toggles the channel on the ADC to alternate sampling X and Y axis
-  always_ff @(posedge clk ) begin
+   always_ff @(posedge clk ) begin
+    adc_chan[3:1] = 0;
+    if ((adc_chan == `X_CHANNEL) && ADC_CONVST) begin      
+      //Store Value
+      adc_x_value = adcValue; 
+      // Send signal to PI
+      //Set channel to poll the other channel
+      adc_chan[0] = `Y_CHANNEL;
+
+    end else if((adc_chan == `Y_CHANNEL)  && ADC_CONVST) begin
+      adc_y_value = adcValue;
+      adc_chan[0] = `X_CHANNEL;
+    end
 
   end
 
@@ -128,6 +138,24 @@ module bankVault (
     endcase
 /******************TESTING ADC ENDS********************************/
 
+//Strings to be send to the processor based on current state
+	logic [31:0] start_string;
+	logic [31:0] game_1_string; // james game
+	logic [31:0] game_2_string; // mo game
+	logic [31:0] game_3_string; // clint
+	logic [31:0] victory_string;
+
+	logic [3:0] x_pos;
+	logic [3:0] y_pos;
+	
+	assign x_pos = (adc_x_value > 12'h700) ? 1111 : 0000; //check for quadrant
+	assign y_pos = (adc_y_value > 12'h700) ? 1111 : 0000;
+	
+	assign start_string 		= { 28'b0, current_state, rgb_output[0]};
+	assign game_1_string		= {  4'b0, x_pos, 4'b000, y_pos, 12'b0, current_state, rgb_output[0]};
+	assign game_2_string		= { 28'b0, current_state, rgb_output[0]};
+	assign game_3_string		= { 28'b0, current_state, rgb_output[0]};
+	assign victory_string	= { 28'b0, current_state, rgb_output[0]};
 
 
 /* State 	: Desc
@@ -142,34 +170,35 @@ module bankVault (
 					
 	game_2	: Sends Random number generated for screen display
 	game_3	: Sends the spank signal
-	victory 	: Sends State variable
+	victory 	: Sends State variable */
+	
+	
+  always_comb begin : state_logic
 
-*/
-  always @* begin : state_logic
-    current_state = next_sta
+    current_state <= next_state;
     unique case (current_state)  
       start_up  : begin
-							rgb_output <= 
+                    rgb_input <= start_string;
                   end
 						
       game_1    : begin
-							rgb_output <=
-						end
+                    rgb_input <= game_1_string;
+						      end
 						
       game_2    :	begin
-							rgb_output <=
-						end
+                    rgb_input <= game_2_string;
+						      end
 						
       game_3    :	begin
-							rgb_output <=
-						end
+                    rgb_input <= game_3_string;
+						      end
 						
-      victory   :	begin 
-							rgb_output <=
-						end
+      victory   :	begin  
+                      rgb_input <= victory_string;
+						      end
       
       default : begin
-        
+			rgb_input <= 32'hbadc0c0a;
       end
       
     endcase
@@ -183,7 +212,7 @@ module bankVault (
       next_state <= start_up;
     else begin
 
-      if(current_state == (start_up && (kpNum == 1))) begin
+      if(current_state == (start_up  && (kpNum == 1))) begin
         next_state <= game_1;
       end
 

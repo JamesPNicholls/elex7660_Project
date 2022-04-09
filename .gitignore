@@ -71,9 +71,8 @@ PLLJ_PLLSPE_INFO.txt
 
 # User Specific files
 elex7660_Project.code-workspace
-*/PICTUREs
-*/software/
-*/software_v2
+*/PICTUREs/
+*/software_v2/
 
 
 # Some stuff for nios 2

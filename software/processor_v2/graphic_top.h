@@ -25,55 +25,21 @@
 #define SET_DCN (*(int*)PIO_BASE)   = (*(int*)PIO_BASE) | DCN_MASK;
 #define CLEAR_DCN (*(int*)PIO_BASE) = (*(int*)PIO_BASE) & ~DCN_MASK;
 
-enum state{start_up, game_1, game_2, game_3, victory, error = 7};
+enum state{start_up = 0 , game_1 = 2, game_2=4, game_3=6, victory = 8, error = 0xe};
 
-/* Object to store all the info for the cursor */
-struct cursor
-{
-    int x_pos, y_pos, size;
-    unsigned char f_colour;
-    unsigned char l_colour;
-    unsigned char draw_data[DRAW_SIZE];
-    unsigned char clear_data[CLEAR_SIZE];
-};//struct cursor
-
-//clear location of cursor and redraw
-void cursor_draw(struct cursor *self)
-{
-    alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE,  self->draw_data,  0, NULL, 0);
-};//void cursor_draw(struct cursor *self)
-
-void cursor_screen_colour(struct  cursor *self)
-{
-
-};
-
-/*  Retrieve ADC value stored on the PIO_BASE, convert it to screen
-    dimensions and store in the cursor struct
-*/
-void cursor_get_pos(struct cursor *self, int pi_base)
-{
-    unsigned long int adc_val   = (unsigned long int) pi_base;
-    unsigned int adc_conv       = 0;
-
-    adc_conv = ((adc_val) >> 20) & ADC_VALUE_MASK/ADC_X_COEFF;
-    self->x_pos = adc_conv;
-    self->draw_data[1] = self->x_pos;
-    self->draw_data[3] = self->x_pos + self->size;
-    
-    adc_conv = ((adc_val) >> 8) & ADC_VALUE_MASK/ADC_Y_COEFF;
-    self->y_pos = adc_conv;
-    self->draw_data[2] = self->y_pos;
-    self->draw_data[4] = self->y_pos + self->size;    
-    
-    return;    
-} //void cursor_get_pos(struct cursor *self, int *pi_base)
-
+unsigned char draw_data[DRAW_SIZE] = {DRAW_COM, 0, 0, WIDTH, HEIGHT, 0, 0, 0, 0, 0, 0 };
 
 /* Non cursor functions*/
 void clear_screen()
 {
     CLEAR_DCN;
+    draw_data[5]    = 0;
+    draw_data[6]    = 0;
+    draw_data[7]    = 0;
+    draw_data[8]    = 0;
+    draw_data[9]    = 0;
+    draw_data[10]   = 0;
+
     unsigned char clear_data[CLEAR_SIZE] = {CLEAR_COM, 0x00, 0x00, WIDTH-1, HEIGHT-1};
     alt_avalon_spi_command(SPI_0_BASE, 0, CLEAR_SIZE, clear_data, 0, NULL , 0);
 } 
