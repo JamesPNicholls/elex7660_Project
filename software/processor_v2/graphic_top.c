@@ -18,8 +18,6 @@ unsigned char initdata[INITDATA_SIZE] = { 0xAE, 0x81, 0xFF, 0x82, 0xFF, 0x83, 0x
 		     0xB1, 0x31, 0xB3, 0x10, 0xBB, 0x3A, 0xBE,
 		     0x3E, 0x2E, 0xAF } ;
 
-
-
 int main()
 {
 	//initialize cursor object
@@ -43,6 +41,7 @@ int main()
 
 	while(1)
 	{		
+
 		clear_screen();
 		check_valid();			
 		switch ((*(int*)PIO_BASE) & STATE_MASK)
@@ -62,16 +61,15 @@ int main()
 
 		case game_1		:
 			cursor_get_pos( &sCursor, (*(int*)PIO_BASE));
-			// Fill screen
+			// Fill with colour 
 			// Print Code
 			break;
-		case game_2		:
-			// get code
+		case game_2		:		
 			// print code
 			// print pass or error
 			break;
 		case game_3		:
-			// PRINT SPANK ME 
+
 			// PRINK SPANK ME HARDERs
 			break;	
 		
@@ -79,9 +77,7 @@ int main()
 			// VICTORY SCREEN
 		default:
 			break;
-		}
-		
-		
+		}		
 		frame_delay();
 		
 	};

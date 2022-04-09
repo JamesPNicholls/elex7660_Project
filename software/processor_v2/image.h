@@ -1,5 +1,5 @@
 // image.h - image data to put on display
-// image converted using tool at https://www.digole.com/tools	/PicturetoC_Hex_converter.php with 65K color option
+// image converted using tool at https://www.digole.com/tool/PicturetoC_Hex_converter.php with 65K color option
 // Robert Trost - Feb 3, 2020
 
 #ifndef IMAGE_H_
