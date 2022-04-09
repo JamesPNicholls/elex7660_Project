@@ -42,7 +42,7 @@ module bankVault (
   logic [11:0] adcValue;    // ADC result    
   logic [3:0] displayNum;	  // number to display on 7-seg
   logic [3:0] kpNum; 		    // keypad output
-  logic [1:0] digit;        // 7-seg display digit currently selected
+  logic [2:0] digit;        // 7-seg display digit currently selected
   logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
   logic kphit;              // keypad button press indicator
 
@@ -115,7 +115,7 @@ module bankVault (
 		begin
 			delayCnt <= delayCnt + 1'b1;  
 			if (delayCnt == 0)
-				if (digit >= 2)
+				if (digit >= 3)
 					digit <= '0;
 				else
 					digit <= digit + 1'b1 ;
@@ -123,15 +123,14 @@ module bankVault (
 	end
 
     // enable the 7-segment module for the selected digit
-
 	assign ct =  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
 
     // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-
-        2 : displayNum <= current_state ;
+        3 : displayNum <= 4'hf;
+        2 : displayNum <= mo_num[16:3] ;
         1 : displayNum <= adc_x_value[7:4] ;
         0 : displayNum <= adc_x_value[3:0] ;
 		default: 
@@ -173,12 +172,13 @@ module bankVault (
 	game_3	: Sends the spank signal
 	victory 	: Sends State variable */
 	
-	
+
   always_comb begin : state_logic
 	
     
     unique case (current_state)  
       start_up  : begin
+
 							rgb_input <= start_string;
 						  current_state <= next_state;
 						  
@@ -187,11 +187,13 @@ module bankVault (
       game_1    : begin
 							rgb_input <= game_1_string;
 						   current_state <= next_state;
+               dipla
 						      end
 							
       game_2    :	begin
 							rgb_input <= game_2_string;
 						  current_state <= next_state;
+              display <= monums
 						      end
 						
       game_3    :	begin
