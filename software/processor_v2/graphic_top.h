@@ -1,6 +1,8 @@
 #ifndef __GRAPHIC_TOP_H__
 #define __GRAPHIC_TOP_H__
-//Misc
+
+// For w/e reason 96 and 64 dont work if I want
+// to draw over the entire screen i have to use 127 and 95
 #define WIDTH   0x7f
 #define HEIGHT  0x5f
 
@@ -29,7 +31,7 @@
 #define SET_DCN (*(int*)PIO_BASE)   = (*(int*)PIO_BASE) | DCN_MASK;
 #define CLEAR_DCN (*(int*)PIO_BASE) = (*(int*)PIO_BASE) & ~DCN_MASK;
 
-enum state{start_up = 0 , game_1 = 1, game_2 = 2, game_3 = 3, victory = 4, error = 7};
+enum state{start_up = 0 , game_1 = 1, game_2 = 2, game_3 = 3, harder = 4, victory = 5, error = 7};
 
 unsigned char draw_data[DRAW_SIZE] = {DRAW_COM, 0x00, 0x00, WIDTH, HEIGHT, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
@@ -52,15 +54,23 @@ void clear_screen()
     alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL , 0);
 } 
 
-void set_draw_colour(unsigned char col)
+void set_draw_colour(unsigned char col[6])
 {
-    draw_data[5]    = col;
-    draw_data[6]    = col;
-    draw_data[7]    = col;
-    draw_data[8]    = col;
-    draw_data[9]    = col;
-    draw_data[10]   = col;
+    draw_data[5]    = col[0];
+    draw_data[6]    = col[1];
+    draw_data[7]    = col[2];
+    draw_data[8]    = col[3];
+    draw_data[9]    = col[4];
+    draw_data[10]   = col[5];
     return;
+}
+
+void set_draw_data( unsigned char *pos_d)
+{
+    draw_data[1] = pos_d[0];
+    draw_data[2] = pos_d[1];
+    draw_data[3] = pos_d[2];
+    draw_data[4] = pos_d[3];
 }
 
 //Waits for the 

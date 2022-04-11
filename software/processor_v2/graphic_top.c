@@ -28,105 +28,199 @@ int main()
 	unsigned char data;  // temporary storage of byte to be sent to display
 	unsigned long int PIO_INPUT;
 	unsigned int state_var; 
-	unsigned char clear_Flag[4] = {1,1,1,1};
+	unsigned char x_val, y_val;
+	unsigned char fill_com[2] = {0x26, 1};
 	
 	// send controller initialization sequence
 	CLEAR_DCN;
 	alt_avalon_spi_command(SPI_0_BASE, 0, INITDATA_SIZE, initdata, 0, NULL, 0) ;
 	clear_screen();
+	unsigned char flags[6] = {1,1,1,1,1,1};
+
+
 	//alt_avalon_spi_command(SPI_0_BASE, 0, CLEAR_SIZE, clear_data, 0, NULL, 0);
 	 while(1)
 	 {
 	 	PIO_INPUT = (*(int*)PIO_BASE);	
 	 	state_var = (PIO_INPUT >> 1) & STATE_MASK;
+		x_val     = (PIO_INPUT  >> 24) & 0xf;
+		y_val 	  = (PIO_INPUT  >> 16) & 0xf;
 		
 
+		frame_delay();
 	 	switch (state_var)
 	 	{
 	 	case start_up   :
-		 	if (clear_Flag[0])
-			 clear_screen();
-			 frame_delay();
-			
-			clear_Flag[0] = 0;
-		 	set_draw_colour(0xff);
-	 		for ( x=0 ; x < START_SIZE/4 ; x++)
-	 		{
-				draw_data[1] = start_0[x*4]	;
-				draw_data[2] = start_0[x*4+1]	;
-				draw_data[3] = start_0[x*4+2]	;
-				draw_data[4] = start_0[x*4+3]	;
-				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
-	 		}
-			
+			if(flags[0])
+			{
+				clear_screen();
+				flags[0] = 0;
+				flags[5] = 1;
+			}
+			else
+			{
+				set_draw_colour(white);
+				for ( x=0 ; x < START_SIZE/4 ; x++)
+				{
+					set_draw_data(&start_0[x*4]);
+					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				}
+
+			}
+				
+				
 			
 	 		// fill framebuffer - note array starts from top left going across rows,
   	 		// but must fill buffer from top left, going down columns.
 			break;
 	 	case game_1		:
-		 	if (clear_Flag[1])
-			 clear_screen();
-			 frame_delay();
-			
-			clear_Flag[1] = 0;
-		
-			set_draw_colour(0xff);
-	 		for ( x=0 ; x < SPANK_0_SIZE/4 ; x++)
-	 		{
-				draw_data[1] = spank_0[x*4]	;
-				draw_data[2] = spank_0[x*4+1]	;
-				draw_data[3] = spank_0[x*4+2]	;
-				draw_data[4] = spank_0[x*4+3]	;
+		// james game
+			if(flags[1])
+			{
+				clear_screen();
+				flags[1]=0;
+			}
+			else
+			{
+				set_draw_colour(red);
+				set_draw_data(joy_res_TR);
 				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
-	 		}
+				set_draw_data(joy_res_BL);
+				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				set_draw_data(joy_res_TL);
+				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				set_draw_data(joy_res_BR);
+				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				
+
+				if(x_val)
+				{
+					if(y_val)
+					{
+						set_draw_colour(green);
+						set_draw_data(joy_res_TL);
+						alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+					}
+					else
+					{
+						set_draw_colour(green);
+						set_draw_data(joy_res_TR);
+						alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+					}
+
+				}
+				else
+				{
+					if(y_val)
+					{
+						set_draw_colour(green);
+						set_draw_data(joy_res_BL);
+						alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);	
+					}
+					else
+					{
+						set_draw_colour(green);
+						set_draw_data(joy_res_BR);
+						alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+					}					
+				}
+
+			}
 	 		break;
-	 		//
 
 	 	case game_2		:
-			if (clear_Flag[2])
-				clear_screen();
-				frame_delay();
-			
-			clear_Flag[2] = 0;
-			set_draw_colour(0x55);
-	 		for ( x=0 ; x < SPANK_1_SIZE/4 ; x++)
+			if(flags[2])
 			{
-				draw_data[1] = spank_1[x*4]	;
-				draw_data[2] = spank_1[x*4+1]	;
-				draw_data[3] = spank_1[x*4+2]	;
-				draw_data[4] = spank_1[x*4+3]	;
-				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				clear_screen();
+				flags[2]=0;
 			}
-	 		// PRINK SPANK ME HARDERs
+			else
+			{
+				for(x = 0; x < CLOCK_SIZE/4; x++)
+				{
+					set_draw_colour(white);
+					if(x == 0)
+					{
+						fill_com[1] = 0;						
+						alt_avalon_spi_command(SPI_0_BASE, 0, 2, fill_com, 0, NULL, 0); // clear fill
+					}
+					else
+					{						
+						fill_com[1] = 1;
+						alt_avalon_spi_command(SPI_0_BASE, 0, 2, fill_com, 1, NULL, 0); // clear fill
+					}
+					set_draw_data(&clock_0[x*4]);
+					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 1, NULL, 0);
+				}
+
+			} 
 	 		break;
 
 	 	case game_3		:
+			if(flags[3])
+			{
+				clear_screen();
+				flags[3]=0;
+			}
+			else
+			{
+				set_draw_colour(white);
+				for ( x=0 ; x < SPANK_0_SIZE/4 ; x++)
+				{
+					set_draw_data(&spank_0[x*4]);
+					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				}
+	 		}
+	 		break;
 
+		case harder		:
+			if(flags[4])
+			{
+				clear_screen();
+				flags[4]=0;
+			}
+			else
+			{
+				set_draw_colour(white);
+				for ( x=0 ; x < SPANK_1_SIZE/4 ; x++)
+				{
+					set_draw_data(&spank_1[x*4]);
+					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				}
+			}
 	 		break;
 		
 	 	case victory 	:
-			if (clear_Flag[3])
-				clear_screen();
-				frame_delay();
-				
-			clear_Flag[3] = 0;
-			set_draw_colour(0xff);
-			for ( x=0 ; x < VICTORY_SIZE/4 ; x++)
+
+			if(flags[5])
 			{
-				draw_data[1] = victory_0[x*4]	;
-				draw_data[2] = victory_0[x*4+1]	;
-				draw_data[3] = victory_0[x*4+2]	;
-				draw_data[4] = victory_0[x*4+3]	;
-				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				clear_screen();
+				flags[5]=0;
+				flags[0]=1;
+				flags[1]=1;
+				flags[2]=1;
+				flags[3]=1;
+				flags[4]=1;
 			}
-			  //VICTORY SCREEN
-	 		break;
+			else
+			{
+				set_draw_colour(white);
+				for ( x=0 ; x < VICTORY_SIZE/4 ; x++)
+				{
+					draw_data[1] = victory_0[x*4]	;
+					draw_data[2] = victory_0[x*4+1]	;
+					draw_data[3] = victory_0[x*4+2]	;
+					draw_data[4] = victory_0[x*4+3]	;
+					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
+				}
+			}
+			break;
 
 	 	default:
-	 		draw_data[5]    = 0xff;
+	 		draw_data[5]    = 0x00;
 	 		draw_data[6]    = 0x00;
 	 		draw_data[7]    = 0xff;
-	 		draw_data[8]    = 0xff;
+	 		draw_data[8]    = 0x00;
 	 		draw_data[9]    = 0x00;
 	 		draw_data[10]   = 0xff;
 	 		alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);

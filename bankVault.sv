@@ -31,8 +31,11 @@ module bankVault (
               
               // ADC interface
               output ADC_CONVST, ADC_SCK, ADC_SDI,  
-				      input ADC_SDO,
+				  input ADC_SDO,
               input logic  reset_n, 
+				  
+				  //Clint spank
+				  inout logic[3:0] GPIO_1,
               
               //OLED Controls
               output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res				 
@@ -58,7 +61,27 @@ module bankVault (
   logic [11:0] adc_x_value;
   logic [11:0] adc_y_value;
 
+// Blessed Saint Gaudet
+//input logic  knock_input, 		//knock sensor input
+//input logic  reset_n, CLOCK_50,
+//output logic output_elmag,		//elmag output
+//output logic unlocked_flag);
+	
+	logic emag_state_flag;
+	logic emag_out_flag;
+	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag));
+  
+  logic[15:0] emag_count;
+  always_comb begin
+		if(emag_state_flag) 
+			LED <= '1;
+		else
+			LED <= '0;
+	end
+  
+  
   adcinterface adcinterface_X(  .clk, .reset_n,  .chan(adc_chan), .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
+  
   
   //Toggles the channel on the ADC to alternate sampling X and Y axis
    always_ff @(posedge clk ) begin
@@ -93,7 +116,7 @@ module bankVault (
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
   assign rgb_dc = rgb_output[0]; 
-  assign rgb_res =  ((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1; //Power button on kpad for reset
+  assign rgb_res =   reset_n || (((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1); //Power button on kpad for reset
 
   // State Variables
   logic [2:0] current_state;
@@ -105,7 +128,8 @@ module bankVault (
     game_1    = 1,
     game_2    = 2,
     game_3    = 3,
-    victory   = 4,
+	 harder	  = 4,
+    victory   = 5,
     fubar     = 7; //error state if anything bad happens
 
   /******************TESTING ADC********************************/
@@ -129,51 +153,64 @@ module bankVault (
     // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-        3 : displayNum <= 4'hf;
-        2 : displayNum <= mo_num[16:3] ;
-        1 : displayNum <= adc_x_value[7:4] ;
-        0 : displayNum <= adc_x_value[3:0] ;
+        3 : displayNum <= r_num_3;
+        2 : displayNum <= r_num_2;
+        1 : displayNum <= r_num_1;
+        0 : displayNum <= r_num_0;
 		default: 
            displayNum = 'hf ; 
     endcase
 /******************TESTING ADC ENDS********************************/
+
+
+	//Generates some random numbers to be used for Mo's and James's Game
+	logic [3:0] r_num_3, r_num_2, r_num_1, r_num_0;
+	always_ff @ (posedge clk) begin
+		if(~reset_n) begin
+			r_num_3 <= 0;
+			r_num_2 <= 0; 
+			r_num_1 <= 0; 
+			r_num_0 <= 0;
+		end else begin
+			if(current_state != game_1) begin
+				r_num_3 <= adcValue[3:0];
+				r_num_2 <= adcValue[7:4]; 
+				r_num_1 <= adcValue[9:6]; 
+				r_num_0 <= adcValue[5:2];
+			end else begin
+				r_num_3 <= r_num_3;
+				r_num_2 <= r_num_2; 
+				r_num_1 <= r_num_1; 
+				r_num_0 <= r_num_0;
+			end
+		end
+	
+	end
+
 
 //Strings to be send to the processor based on current state
 	logic [31:0] start_string;
 	logic [31:0] game_1_string; // james game
 	logic [31:0] game_2_string; // mo game
 	logic [31:0] game_3_string; // clint
+	logic	[31:0] harder_string;
 	logic [31:0] victory_string;
 
 	logic [3:0] x_pos;
 	logic [3:0] y_pos;
 	
-	assign x_pos = (adc_x_value > 12'h700) ? 1100 : 0011; //check for quadrant
-	assign y_pos = (adc_y_value > 12'h700) ? 1100 : 0011;
+	assign x_pos = (adc_x_value > 12'h800) ? 4'b1111 : 4'b0000; //check for quadrant
+	assign y_pos = (adc_y_value > 12'h800) ? 4'b1111 : 4'b0000;
 	
-	assign start_string 		= { 28'b0, current_state, rgb_output[0]};
-	assign game_1_string		= {  4'b0, x_pos, 4'b0110, y_pos, 12'b0, current_state, rgb_output[0]};
-	assign game_2_string		= { 28'b0, current_state, rgb_output[0]};
-	assign game_3_string		= { 28'b0, current_state, rgb_output[0]};
-	assign victory_string	= { 28'hbadc0c0, current_state, rgb_output[0]};
+	assign start_string 		= { 28'b0, 3'b00, rgb_output[0]};
+	assign game_1_string		= {  4'b0, x_pos, 4'b0, y_pos, 12'b0, 3'b001, rgb_output[0]};
+	assign game_2_string		= { 28'b0, 3'b010, rgb_output[0]};
+	assign game_3_string		= { 28'b0, 3'b011, rgb_output[0]};
+	assign harder_string		= { 28'b0, 3'b100, rgb_output[0]}; 
+	assign victory_string	= { 28'hbadc0c0, 3'b101, rgb_output[0]};
 
 
-/* State 	: Desc
-	start_up : 	[31:28] 	Stability pulse
-					[3:1]		State Variable
-					
-	
-	game_1	:	[31:28]	Stability pulse
-					[27:16] 	X adc
-					[15:4] 	y adc
-					[3:1]   state variable 
-					
-	game_2	: Sends Random number generated for screen display
-	game_3	: Sends the spank signal
-	victory 	: Sends State variable */
-	
-
-  always_comb begin : state_logic
+	always_comb begin : state_logic
 	
     
     unique case (current_state)  
@@ -187,19 +224,22 @@ module bankVault (
       game_1    : begin
 							rgb_input <= game_1_string;
 						   current_state <= next_state;
-               dipla
+               
 						      end
 							
       game_2    :	begin
 							rgb_input <= game_2_string;
 						  current_state <= next_state;
-              display <= monums
 						      end
 						
       game_3    :	begin
 							rgb_input <= game_3_string;
 						  current_state <= next_state;   
 							  end
+		harder	: begin
+							rgb_input <= harder_string;
+							current_state <= next_state;
+							end
 						
       victory   :	begin  
 							rgb_input <= victory_string;
@@ -227,9 +267,11 @@ module bankVault (
 
         game_2    : next_state = (kpNum == 3) ? game_3 : current_state;
 
-        game_3    : next_state = (kpNum == 4) ? victory : current_state;
+        game_3    : next_state = (kpNum == 4) ? harder : current_state;
+		  
+		  harder		: next_state = (kpNum == 5) ? victory : current_state;
         
-        victory   : next_state = (kpNum == 5) ? start_up : current_state;
+        victory   : next_state = (kpNum == 6) ? start_up : current_state;
        
         default: begin
           next_state <= start_up;
