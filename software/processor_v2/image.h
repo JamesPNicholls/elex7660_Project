@@ -11,6 +11,16 @@
 #define START_SIZE 52
 #define CLOCK_SIZE 28
 
+/*  Originally used a brute force method of sending information to
+    the memory buffer. This was impractical for memory reasons. Drawing
+    is accomplished by drawing a series of rectanles using DRAW_RECTABLE(0x22) 
+    comamnd via the alt_avalon_spi_command().
+
+    Each group of 4 is a start and stop coordinate of a rectangle on the image 
+    See file /python/image_convert.py for demonstration of how coordinates were
+    determined. 
+*/
+
 unsigned char spank_0[] = {13, 9, 22, 13,
     10, 12, 13, 15,
     13, 15, 19, 16,
@@ -186,14 +196,18 @@ unsigned char start_0[] =
 	81, 19, 86, 44
 };
 
+// Colour arrays used in the draw_rectangle command
 unsigned char white[]       = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 unsigned char green[]       = { 0x00, 0xff, 0x00, 0x00, 0xff, 0x00};
 unsigned char red[]         = { 0xff, 0x00, 0x00, 0xff, 0x00, 0x00};
+
+//images used in game_1
 unsigned char joy_res_TL[]  ={13,  13,  34, 18};    // TL
 unsigned char joy_res_TR[]  ={61, 13,  82, 16}; // TR
 unsigned char joy_res_BL[]  ={13,  45, 34, 50};
 unsigned char joy_res_BR[]  ={61, 45, 82, 50};
 
+// Drawing used for game_2
 unsigned char clock_0[] = {
     25, 10, 72, 56,
     47, 13, 50, 19,

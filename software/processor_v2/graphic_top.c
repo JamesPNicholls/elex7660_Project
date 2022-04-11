@@ -1,17 +1,16 @@
-// lab5.c - initialize SSD1331 and fill framebuffer with an image
-// Robert Trost - Feb 3, 2020
+/* Originally made by Robert Trost for ELEX 7660 @ BCIT
 
+	Heavily modified by James Nicholls for use in ELEX 7660 final project
+	Used as a top level driver module to control a SSD1331 OLED screen, via
+	SPI and PIO through the Nios 2 Soft process on a De0-Nano-SoC(5CSEMA4U23C6)
+*/
 
 #include <time.h>
 #include <stdint.h>
-#include "system.h"		// peripheral base addresses
-#include <altera_avalon_spi.h> // function to control altera SPI IP
-#include "graphic_top.h"
-#include "image.h"		// image to write to display
-
-
-
-
+#include "system.h"				// peripheral base addresses
+#include <altera_avalon_spi.h> 	// function to control altera SPI IP
+#include "graphic_top.h"		// Header used to store additional functions
+#include "image.h"				// Image arrays to print on screen
 
 // rgb display initialization sequence
 #define INITDATA_SIZE 40
