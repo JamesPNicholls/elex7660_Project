@@ -84,7 +84,7 @@ module bankVault (
   end
 
   // Processor Instantiation
-  processor u0 (
+/*  processor u0 (
 		.clk_clk       (FPGA_CLK1_50),    // clk.clk
 		.gpio_in_port  (rgb_input),       // gpio.in_port
 		.gpio_out_port (rgb_output),      // gpio.out_port
@@ -93,7 +93,7 @@ module bankVault (
 		.spi_MOSI      (rgb_din),         // .MOSI
 		.spi_SCLK      (rgb_clk),         // .SCLK
 		.spi_SS_n      (rgb_cs)           // .SS_n
-	);
+	);*/
 
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
@@ -113,6 +113,14 @@ module bankVault (
     victory   = 4;
     fubar     = 7; //error state if anything bad happens
 
+	/******************Game_One********************************/
+
+  logic [19:0] game_one_bits;
+  logic [2:0] game_one_counter;
+  logic mo_flag;
+
+	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter))
+	 
   /******************TESTING ADC********************************/
 	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
     always_ff @(posedge clk) begin
