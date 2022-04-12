@@ -42,9 +42,9 @@ module bankVault (
 
   logic clk ;               // clock
   logic [11:0] adcValue;    // ADC result    
-  logic [3:0] displayNum;	  // number to display on 7-seg
+  logic [4:0] displayNum;	  // number to display on 7-seg
   logic [3:0] kpNum; 		    // keypad output
-  logic [1:0] digit;        // 7-seg display digit currently selected
+  logic [2:0] digit;        // 7-seg display digit currently selected
   logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
   logic kphit;              // keypad button press indicator
 
@@ -93,7 +93,7 @@ module bankVault (
 		.spi_MOSI      (rgb_din),         // .MOSI
 		.spi_SCLK      (rgb_clk),         // .SCLK
 		.spi_SS_n      (rgb_cs)           // .SS_n
-	);*/
+	);*/ //
 
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
@@ -110,7 +110,7 @@ module bankVault (
     game_1    = 1,
     game_2    = 2,
     game_3    = 3,
-    victory   = 4;
+    victory   = 4,
     fubar     = 7; //error state if anything bad happens
 
 	/******************Game_One********************************/
@@ -119,8 +119,9 @@ module bankVault (
   logic [2:0] game_one_counter;
   logic mo_flag;
 
-	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter))
-	 
+	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
+	
+  
   /******************TESTING ADC********************************/
 	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
     always_ff @(posedge clk) begin
@@ -128,7 +129,7 @@ module bankVault (
 		begin
 			delayCnt <= delayCnt + 1'b1;  
 			if (delayCnt == 0)
-				if (digit >= 2)
+				if (digit >= 3)
 					digit <= '0;
 				else
 					digit <= digit + 1'b1 ;
@@ -143,11 +144,11 @@ module bankVault (
     // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-        2 : displayNum <= rgb_input[31:28] ;
-        1 : displayNum <= rgb_input[27:24] ;
-        0 : displayNum <= rgb_input[23:20] ;
-		default: 
-           displayNum = 'hf ; 
+        3 : displayNum <= game_one_bits[19:15] ;
+        2 : displayNum <= game_one_bits[14:10] ;
+        1 : displayNum <= game_one_bits[9:5] ;
+        0 : displayNum <= game_one_bits[4:0] ;
+	 default: displayNum = 'hf ; 
     endcase
 /******************TESTING ADC********************************/
 
