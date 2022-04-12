@@ -18,27 +18,30 @@
 `define Y_CHANNEL 0
 
 module bankVault ( 
-              // Clk
-              input logic FPGA_CLK1_50,
+    // Clk
+    input logic FPGA_CLK1_50,
 
-              //7-seg, LEDS, kpad
-              output logic [3:0] kpc,  // column select, active-low
-              (* altera_attribute = "-name WEAK_PULL_UP_RESISTOR ON" *)
-              input logic  [3:0] kpr,  // rows, active-low w/ pull-ups
-              output logic [7:0] leds, // active-low LED segments 
-              output logic [3:0] ct,   // " digit enables
-              output logic [7:0] LED,  // 8 green LEDS next to ethernet connector
-              
-              // ADC interface
-              output ADC_CONVST, ADC_SCK, ADC_SDI,  
-				  input ADC_SDO,
-              input logic  reset_n, 
-				  
-				  //Clint spank
-				  inout logic[3:0] GPIO_1,
-              
-              //OLED Controls
-              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res				 
+    //7-seg, LEDS, kpad
+    output logic [3:0] kpc,  // column select, active-low
+    (* altera_attribute = "-name WEAK_PULL_UP_RESISTOR ON" *)
+    input logic  [3:0] kpr,  // rows, active-low w/ pull-ups
+    output logic [7:0] leds, // active-low LED segments 
+    output logic [3:0] ct,   // " digit enables
+    output logic [7:0] LED,  // 8 green LEDS next to ethernet connector
+
+    // ADC interface
+    output ADC_CONVST, ADC_SCK, ADC_SDI,  
+    input ADC_SDO,
+    input logic  reset_n, 
+
+    //Clint spank
+    inout logic[3:0] GPIO_1,
+
+    //OLED Controls
+    output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res,
+
+    //speaker takes a PWM
+    output spkr
 ) ;
 
   logic clk ;               // clock
@@ -57,6 +60,10 @@ module bankVault (
 	kpdecode kpdecode_0 (.kpr, .kpc, .kphit, .num(kpNum)) ;
 	colseq colseq_0 (.clk, .reset_n, .kpr, .kpc);
 
+  // Buttons make spkr go brrrrrrrrrrrrrrr
+ beep_beep beep_boop( .clk, .enable(kphit), .spkr_on(sprk));
+
+	
   // ADC interface signals   
   logic [3:0] adc_chan;
   logic [11:0] adc_x_value;
@@ -66,24 +73,11 @@ module bankVault (
 	logic emag_state_flag;
   logic emag_state_flag_2;
 	logic emag_out_flag;
-	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .enable(game_3_en), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag));
+	logic emag_rand;
+	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .enable(game_3_en), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_rand), .unlocked_flag(emag_state_flag));
   safe_tilt_and_unlock safe_1( .knock_input(GPIO_1[1]), .enable(game_4_en), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag_2));
   
-	
 
-
-  /*
-    input logic clk, reset_n,
-    input logic [11:0] adc_y, adc_x,
-    input logic [2:0]  num_1, num_2, num_3, num_4,
-    input logic [3:0]  key_press,
-    output logic [1:0] quadrant_out,
-
-    output logic pass_flag,
-	output logic q_match,
-    output logic [2:0] joy_stata
-  */
-  
   //*************************James Game
   logic[1:0] quadrant_out;
   logic q_match;
@@ -143,13 +137,6 @@ module bankVault (
   assign rgb_dc = rgb_output[0]; 
   assign rgb_res =   reset_n || (((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1); //Power button on kpad for reset
 
-
-  /******************TESTING ADC********************************/
-
-
-    // enable the 7-segment module for the selected digit
-
-	
 	// Values are set in the state machine
   logic[4:0] disp_num_0;
   logic[4:0] disp_num_1;  
@@ -164,7 +151,6 @@ module bankVault (
 		default: 
            displayNum = 'hf ; 
     endcase
-/******************TESTING ADC ENDS********************************/
 
 
 	//Generates some random numbers to be used for Mo's and James's Game
@@ -211,7 +197,6 @@ module bankVault (
         game_one_counter <= 0;
     
   end   
-
 //************************ mo game ***********************8
 
 
@@ -232,7 +217,7 @@ module bankVault (
 	end
 
 
-//Strings to be send to the processor based on current state
+//Strings to be sent to the processor based on current state
 	logic [31:0] start_string;
 	logic [31:0] game_1_string; // james game
 	logic [31:0] game_2_string; // mo game
@@ -264,6 +249,8 @@ module bankVault (
   assign game_3_en = current_state == game_3 ?  1 : 0;
   assign game_4_en = current_state == harder ?  1 : 0;
 
+  logic start_flag;
+  assign start_flag = (kpNum == 4'hb) ? 1 : 0;
 
   // System States
   localparam [2:0]
@@ -274,6 +261,8 @@ module bankVault (
 	  harder	  = 4,
     victory   = 5,
     fubar     = 7; //error state if anything bad happens 
+  
+	assign GPIO_1[3] = current_state == victory ? 0 : 1;
   
 	always_comb begin : state_logic
     unique case (current_state)  
@@ -291,25 +280,29 @@ module bankVault (
                   end
 						
       game_1    : begin // Mo game
-							rgb_input <= game_1_string;
-						  current_state <= next_state;
+				  rgb_input <= game_1_string;
+				  current_state <= next_state;
               disp_num_0 <=  game_one_bits[19:15];
               disp_num_1 <=  game_one_bits[14:10] ;
               disp_num_2 <=  game_one_bits[9:5] ;
               disp_num_3 <=  {1'b0, kpNum} ;
-              ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed 
-              //Mo's game has different condition to drive the screen
+					 ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed 
+		
+
 						      end
 							
       game_2    :	begin // james Game
-							rgb_input <= game_2_string;
-						  current_state <= next_state;
+					
+					rgb_input <= game_2_string;
+					current_state <= next_state;
               disp_num_0 <= r_num_3;
               disp_num_1 <= r_num_2;
               disp_num_2 <= r_num_1;
               disp_num_3 <= r_num_0;
               ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
-						      end
+
+              //Mo's game has different condition to drive the screen
+						    end
 						
       game_3    :	begin
 							rgb_input <= game_3_string;
@@ -361,15 +354,15 @@ module bankVault (
     else begin
       case (current_state)
 
-        start_up  : next_state = (kpNum == 15) ? game_1 : current_state;
+        start_up  : next_state = (start_flag)  ? game_1 : current_state;
 
         game_1    : next_state = (mo_flag) ? game_2 : current_state;
 
         game_2    : next_state = (james_flag) ? game_3 : current_state;
 
-        game_3    : next_state = (emag_state_flag ) ? harder : current_state;
+        game_3    : next_state = (~emag_state_flag ) ? harder : current_state;
 		  
-		    harder		: next_state = (emag_state_flag_2) ? victory : current_state;
+		   harder		: next_state = (~emag_state_flag_2) ? victory : current_state;
         
         victory   : next_state = (~reset_n) ? start_up : current_state;
        

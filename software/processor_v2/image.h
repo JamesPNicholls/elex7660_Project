@@ -5,6 +5,7 @@
 #ifndef IMAGE_H_
 #define IMAGE_H_
 
+// Size of array for used in the draw loops in graphic_top.c
 #define SPANK_0_SIZE 136
 #define SPANK_1_SIZE 244
 #define VICTORY_SIZE 220
@@ -21,7 +22,9 @@
     determined. 
 */
 
-unsigned char spank_0[] = {13, 9, 22, 13,
+// Spank me
+unsigned char spank_0[] = {
+    13, 9, 22, 13,
     10, 12, 13, 15,
     13, 15, 19, 16,
     19, 16, 22, 21,

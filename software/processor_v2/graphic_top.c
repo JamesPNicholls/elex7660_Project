@@ -23,23 +23,31 @@ unsigned char initdata[INITDATA_SIZE] = { 0xAE, 0x81, 0xFF, 0x82, 0xFF, 0x83, 0x
 
 int main()
 {
-	int x, y ; // array indices used to access pixel data in image arra
-	unsigned char data;  // temporary storage of byte to be sent to display
-	unsigned long int PIO_INPUT;
+	int x, y ; 						// array indices used to access pixel data in image arra
+	unsigned char data;  			// temporary storage of byte to be sent to display
+	
+	unsigned long int PIO_INPUT; 	// Used to store the contents of the PIO_BASE register
+	
+	// data taken from PIO_INPUT
 	unsigned int state_var; 
 	unsigned char x_val, y_val;
+
+	// rectangles can be filled or unfilled to allow for more complex drawings
+	// setting value to 1 causes drawings to be filled, 0 for unfilled
 	unsigned char fill_com[2] = {0x26, 1};
 	
 	// send controller initialization sequence
 	CLEAR_DCN;
 	alt_avalon_spi_command(SPI_0_BASE, 0, INITDATA_SIZE, initdata, 0, NULL, 0) ;
 	clear_screen();
+
+	//Array of flags to clear the contents of the screen when entering a new state
 	unsigned char flags[6] = {1,1,1,1,1,1};
 
 
-	//alt_avalon_spi_command(SPI_0_BASE, 0, CLEAR_SIZE, clear_data, 0, NULL, 0);
 	 while(1)
 	 {
+		//Stores the register data and masks out the desired information
 	 	PIO_INPUT = (*(int*)PIO_BASE);	
 	 	state_var = (PIO_INPUT >> 1) & STATE_MASK;
 		x_val     = (PIO_INPUT  >> 24) & 0xf;
@@ -47,6 +55,8 @@ int main()
 		
 
 		frame_delay();
+
+		//Reads state from the FPGA, and procduces the desired frame on the screen
 	 	switch (state_var)
 	 	{
 	 	case start_up   :
@@ -66,14 +76,8 @@ int main()
 				}
 
 			}
-				
-				
-			
-	 		// fill framebuffer - note array starts from top left going across rows,
-  	 		// but must fill buffer from top left, going down columns.
 			break;
-	 	case game_1		:
-		// james game
+	 	case game_2		: // James game, out of order because debuggung is hard
 			if(flags[1])
 			{
 				clear_screen();
@@ -81,6 +85,7 @@ int main()
 			}
 			else
 			{
+				// Draws 4 red squares on the screen
 				set_draw_colour(red);
 				set_draw_data(joy_res_TR);
 				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
@@ -91,10 +96,10 @@ int main()
 				set_draw_data(joy_res_BR);
 				alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 0, NULL, 0);
 				
-
-				if(x_val)
+				//based on y and x values from the FPGA turn one of the cubes green.,
+				if(y_val > 8)
 				{
-					if(y_val)
+					if(x_val < 8)
 					{
 						set_draw_colour(green);
 						set_draw_data(joy_res_TL);
@@ -110,7 +115,7 @@ int main()
 				}
 				else
 				{
-					if(y_val)
+					if(x_val < 8)
 					{
 						set_draw_colour(green);
 						set_draw_data(joy_res_BL);
@@ -127,7 +132,7 @@ int main()
 			}
 	 		break;
 
-	 	case game_2		:
+	 	case game_1		:
 			if(flags[2])
 			{
 				clear_screen();
@@ -135,10 +140,11 @@ int main()
 			}
 			else
 			{
+				//Draws a cute little clock on the screen
 				for(x = 0; x < CLOCK_SIZE/4; x++)
 				{
 					set_draw_colour(white);
-					if(x == 0)
+					if(x == 0) //First rectangle is unfilled
 					{
 						fill_com[1] = 0;						
 						alt_avalon_spi_command(SPI_0_BASE, 0, 2, fill_com, 0, NULL, 0); // clear fill
@@ -146,7 +152,7 @@ int main()
 					else
 					{						
 						fill_com[1] = 1;
-						alt_avalon_spi_command(SPI_0_BASE, 0, 2, fill_com, 1, NULL, 0); // clear fill
+						alt_avalon_spi_command(SPI_0_BASE, 0, 2, fill_com, 1, NULL, 0); // set fill
 					}
 					set_draw_data(&clock_0[x*4]);
 					alt_avalon_spi_command(SPI_0_BASE, 0, DRAW_SIZE, draw_data, 1, NULL, 0);
@@ -155,7 +161,7 @@ int main()
 			} 
 	 		break;
 
-	 	case game_3		:
+	 	case game_3		: //
 			if(flags[3])
 			{
 				clear_screen();
@@ -191,7 +197,7 @@ int main()
 		
 	 	case victory 	:
 
-			if(flags[5])
+			if(flags[5]) //Clear the flags
 			{
 				clear_screen();
 				flags[5]=0;
@@ -203,7 +209,7 @@ int main()
 			}
 			else
 			{
-				set_draw_colour(white);
+				set_draw_colour(white); //Display the victory screen
 				for ( x=0 ; x < VICTORY_SIZE/4 ; x++)
 				{
 					draw_data[1] = victory_0[x*4]	;
