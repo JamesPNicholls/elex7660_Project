@@ -13,7 +13,7 @@
 *value.
 **********************************************************************/
 
-module decode7 (input logic [3:0] num, output logic [7:0] leds);
+module decode7 (input logic [4:0] num, output logic [7:0] leds);
 
 	always_comb
 		case (num)
@@ -27,13 +27,14 @@ module decode7 (input logic [3:0] num, output logic [7:0] leds);
 			6 : leds = 8'b10000010;
 			7 : leds = 8'b11111000;
 			8 : leds = 8'b10000000;
-			9 : leds = 8'b10010000;			
+			9 : leds = 8'b10011000;			
 			10: leds = 8'b10001000; //A			
-            11: leds = 8'b10000011; //b
-            12: leds = 8'b11000110; //c
-            13: leds = 8'b10100001; //d
-            14: leds = 8'b10000110; //e
-            15: leds = 8'b10001110; //f
-			default: leds = 8'b11111111;
+			11: leds = 8'b10000011; //b
+			12: leds = 8'b10100111; //c
+			13: leds = 8'b10100001; //d
+			14: leds = 8'b10000110; //e
+			15: leds = 8'b10001110; //f
+			16: leds = 8'b10111111; //-
+		default: leds = 8'b11111111; //
 		endcase
 endmodule

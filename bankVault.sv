@@ -93,7 +93,7 @@ module bankVault (
 		.spi_MOSI      (rgb_din),         // .MOSI
 		.spi_SCLK      (rgb_clk),         // .SCLK
 		.spi_SS_n      (rgb_cs)           // .SS_n
-	);*/ //
+	);*/
 
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
