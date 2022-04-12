@@ -118,27 +118,31 @@ module bankVault (
   logic [19:0] game_one_bits;
   logic [2:0] game_one_counter;
   logic mo_flag;
-
-	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
+  logic ctTemp; 
+  
+  gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
 	
   
   /******************TESTING ADC********************************/
 	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
     always_ff @(posedge clk) begin
-	// only switch to next digit when count rolls over for crisp display
-		begin
-			delayCnt <= delayCnt + 1'b1;  
-			if (delayCnt == 0)
-				if (digit >= 3)
-					digit <= '0;
-				else
-					digit <= digit + 1'b1 ;
-		end 
+		delayCnt <= delayCnt + 1'b1;  
+
+      if (kphit == 1)
+	      ctTemp =  1'b1;
+	   else
+	      ctTemp =  1'b0;
+
+		if (delayCnt == 0)
+			if (digit >= 3)
+				digit <= '0;
+			else
+				digit <= digit + 1'b1 ; 
 	end
 
     // enable the 7-segment module for the selected digit
 
-	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+  assign ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
 
     // select the bits from the 12-bit ADC result for the selected digit	
@@ -147,7 +151,7 @@ module bankVault (
         3 : displayNum <= game_one_bits[19:15] ;
         2 : displayNum <= game_one_bits[14:10] ;
         1 : displayNum <= game_one_bits[9:5] ;
-        0 : displayNum <= game_one_bits[4:0] ;
+        0 : displayNum <= {1'b0, kpNum} ;
 	 default: displayNum = 'hf ; 
     endcase
 /******************TESTING ADC********************************/
