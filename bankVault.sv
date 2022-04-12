@@ -35,16 +35,13 @@ module bankVault (
               input logic  reset_n, 
               
               //OLED Controls
-              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res
-
-				 
-) ;
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res );
 
   logic clk ;               // clock
   logic [11:0] adcValue;    // ADC result    
-  logic [3:0] displayNum;	  // number to display on 7-seg
+  logic [4:0] displayNum;	  // number to display on 7-seg
   logic [3:0] kpNum; 		    // keypad output
-  logic [1:0] digit;        // 7-seg display digit currently selected
+  logic [2:0] digit;        // 7-seg display digit currently selected
   logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
   logic kphit;              // keypad button press indicator
 
@@ -84,7 +81,7 @@ module bankVault (
   end
 
   // Processor Instantiation
-  processor u0 (
+/*  processor u0 (
 		.clk_clk       (FPGA_CLK1_50),    // clk.clk
 		.gpio_in_port  (rgb_input),       // gpio.in_port
 		.gpio_out_port (rgb_output),      // gpio.out_port
@@ -93,7 +90,7 @@ module bankVault (
 		.spi_MOSI      (rgb_din),         // .MOSI
 		.spi_SCLK      (rgb_clk),         // .SCLK
 		.spi_SS_n      (rgb_cs)           // .SS_n
-	);
+	);*/
 
   wire [31:0]rgb_output;
   wire [31:0]rgb_input;
@@ -110,36 +107,51 @@ module bankVault (
     game_1    = 1,
     game_2    = 2,
     game_3    = 3,
-    victory   = 4;
+    victory   = 4,
     fubar     = 7; //error state if anything bad happens
 
-  /******************TESTING ADC********************************/
-	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
-    always_ff @(posedge clk) begin
-	// only switch to next digit when count rolls over for crisp display
-		begin
-			delayCnt <= delayCnt + 1'b1;  
-			if (delayCnt == 0)
-				if (digit >= 2)
-					digit <= '0;
-				else
-					digit <= digit + 1'b1 ;
-		end 
+	/******************Game_One********************************/
+
+  logic [19:0] game_one_bits;
+  logic [2:0] game_one_counter;
+  logic mo_flag;
+  logic ctTemp; 
+  
+  gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
+	
+ 
+	 always_ff @(posedge clk) begin
+		delayCnt <= delayCnt + 1'b1;  
+
+		if (kphit == 1)
+			ctTemp =  1'b1;
+		else
+			ctTemp =  1'b0;
+
+		if (delayCnt == 0)
+			if (digit >= 3)
+				digit <= '0;
+			else
+				digit <= digit + 1'b1 ; 
 	end
 
+  always_ff@(posedge clk) begin
+    if ({1'b0, kpNum} == game_one_bits[19:15])
+      game_one_counter <= game_one_counter + 1;
+    else
+      game_one_counter <= game_one_counter;
+  end
     // enable the 7-segment module for the selected digit
 
-	assign ct =  (1'b1 & kphit) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+  assign ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
-
-    // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
-        2 : displayNum <= rgb_input[31:28] ;
-        1 : displayNum <= rgb_input[27:24] ;
-        0 : displayNum <= rgb_input[23:20] ;
-		default: 
-           displayNum = 'hf ; 
+        3 : displayNum <= game_one_bits[19:15] ;
+        2 : displayNum <= game_one_bits[14:10] ;
+        1 : displayNum <= game_one_bits[9:5] ;
+        0 : displayNum <= {1'b0, kpNum} ;
+	 default: displayNum = 'hf ; 
     endcase
 /******************TESTING ADC********************************/
 
