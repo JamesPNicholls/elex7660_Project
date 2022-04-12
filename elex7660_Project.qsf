@@ -190,6 +190,7 @@ set_location_assignment PIN_AD23 -to GPIO_1[32]
 set_location_assignment PIN_AE23 -to GPIO_1[33]
 set_location_assignment PIN_AA18 -to GPIO_1[34]
 set_location_assignment PIN_AC22 -to GPIO_1[35]
+set_global_assignment -name SYSTEMVERILOG_FILE debounce.sv
 set_global_assignment -name SYSTEMVERILOG_FILE gameOne.sv
 set_global_assignment -name QIP_FILE processor/synthesis/processor.qip
 set_global_assignment -name SYSTEMVERILOG_FILE adcinterface.sv

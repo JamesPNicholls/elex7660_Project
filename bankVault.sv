@@ -44,6 +44,7 @@ module bankVault (
   logic [2:0] digit;        // 7-seg display digit currently selected
   logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
   logic kphit;              // keypad button press indicator
+  logic kphit_debounced;              // keypad button press indicator
 
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 
@@ -110,6 +111,32 @@ module bankVault (
     victory   = 4,
     fubar     = 7; //error state if anything bad happens
 
+
+	/******************Random Num Generator***************************/
+
+  //Generates some random numbers to be used for Mo's and James's Game
+  logic [3:0] r_num_3, r_num_2, r_num_1, r_num_0;
+  always_ff @ (posedge clk) begin
+      if(~reset_n) begin
+          r_num_3 <= 0;
+          r_num_2 <= 0; 
+          r_num_1 <= 0; 
+          r_num_0 <= 0;
+      end else begin
+          if(current_state != start_up) begin
+              r_num_3 <= adcValue[3:0];
+              r_num_2 <= adcValue[7:4]; 
+              r_num_1 <= adcValue[9:6]; 
+              r_num_0 <= adcValue[5:2];
+          end else begin
+              r_num_3 <= r_num_3;
+              r_num_2 <= r_num_2; 
+              r_num_1 <= r_num_1; 
+              r_num_0 <= r_num_0;
+          end
+      end
+  end
+  
 	/******************Game_One********************************/
 
   logic [19:0] game_one_bits;
@@ -118,12 +145,12 @@ module bankVault (
   logic ctTemp; 
   
   gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
-	
+	debounce debounce_0 (.clk, .reset_n, .rawInput(kphit), .debouncedInput(kphit_debounced));
  
 	 always_ff @(posedge clk) begin
 		delayCnt <= delayCnt + 1'b1;  
 
-		if (kphit == 1)
+		if (kphit_debounced == 1)
 			ctTemp =  1'b1;
 		else
 			ctTemp =  1'b0;//
@@ -135,19 +162,27 @@ module bankVault (
 				digit <= digit + 1'b1 ; 
 	end
 
+
   always_ff@(posedge clk) begin
-    if ({1'b0, kpNum} == game_one_bits[19:15])
+    if ({1'b0, kpNum} == {1'b0, r_num_3})
       game_one_counter <= game_one_counter + 1;
-    else
-      game_one_counter <= game_one_counter;
+ //   else
+ //     game_one_counter <= game_one_counter;
   end
+  
+/*  always_comb
+		if ({1'b0, kpNum} == game_one_bits[19:15])
+			game_one_counter = game_one_counter + 1;
+		else
+			game_one_counter = game_one_counter; */
+			
     // enable the 7-segment module for the selected digit
 
   assign ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
 	always_comb
 	case( digit )
-        3 : displayNum <= game_one_bits[19:15] ;
+        3 : displayNum <= {1'b0, r_num_3} ;
         2 : displayNum <= game_one_bits[14:10] ;
         1 : displayNum <= game_one_bits[9:5] ;
         0 : displayNum <= {1'b0, kpNum} ;
