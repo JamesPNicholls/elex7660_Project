@@ -1,5 +1,5 @@
 module joy_code(
-    input logic clk, reset_n,
+    input logic clk, enable, reset_n,
     input logic [11:0] adc_y, adc_x,
     input logic [2:0]  num_1, num_2, num_3, num_4,
     input logic [3:0]  key_press,
@@ -63,8 +63,8 @@ always_comb begin : state_logic
     endcase
 end : state_logic
 
-always_ff @(posedge clk, negedge reset_n) begin : state_handler
-    if(~reset_n)
+always_ff @(posedge clk) begin : state_handler
+    if(~reset_n || ~enable)
         next_state <= s_one;
     else begin
         case (current_state)

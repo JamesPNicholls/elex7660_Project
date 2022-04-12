@@ -1,4 +1,4 @@
-module safe_tilt_and_unlock (input logic  knock_input, 		//knock sensor input
+module safe_tilt_and_unlock (input logic  knock_input, enable, 		//knock sensor input
 									  input logic  reset_n, CLOCK_50,
 									  output logic output_elmag,		//elmag output
 									  output logic unlocked_flag);
@@ -10,7 +10,7 @@ module safe_tilt_and_unlock (input logic  knock_input, 		//knock sensor input
    always_ff @(posedge CLOCK_50)
 	begin
 
-		if (~reset_n)
+		if (~reset_n || ~enable)
 		begin
 			output_elmag = 1;
 			unlocked_flag = 0;

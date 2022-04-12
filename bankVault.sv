@@ -64,9 +64,10 @@ module bankVault (
 	
 	// Stuff for CLintin's moduel
 	logic emag_state_flag;
+  logic emag_state_flag_2;
 	logic emag_out_flag;
-	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag));
-  
+	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .enable(game_3_en), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag));
+  safe_tilt_and_unlock safe_1( .knock_input(GPIO_1[1]), .enable(game_4_en), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag_2));
   
 	
 
@@ -84,13 +85,14 @@ module bankVault (
   */
   
   //*************************James Game
-    logic[1:0] quadrant_out;
+  logic[1:0] quadrant_out;
   logic q_match;
   logic james_flag;
   logic [2:0] joy_state;
   
-	joy_code joy_code_0( .clk, .reset_n, 
+	joy_code joy_code_0(  .clk, .enable(game_2_en), .reset_n, 
                         .adc_y(adc_y_value), .adc_x(adc_x_value), 
+                        //Nums are setting by the RNG code block lower
                         .num_1(r_num_0),  .num_2(r_num_1), .num_3(r_num_2), .num_4(r_num_3),
                         .key_press(kpNum),
                         .quadrant_out(quadrant_out), .pass_flag(james_flag), .q_match(q_match), .joy_state(joy_state));                  
@@ -148,7 +150,7 @@ module bankVault (
     // enable the 7-segment module for the selected digit
 
 	
-	// Using these displays as debug values
+	// Values are set in the state machine
   logic[4:0] disp_num_0;
   logic[4:0] disp_num_1;  
   logic[4:0] disp_num_2;
@@ -168,7 +170,7 @@ module bankVault (
 	//Generates some random numbers to be used for Mo's and James's Game
 	// select the bits from the 12-bit ADC result for the selected digit
 	logic [3:0] r_num_3, r_num_2, r_num_1, r_num_0;
-	always_ff @ (posedge clk) begin
+	always_ff @ (posedge clk) begin : rn_generator
 		if(~reset_n) begin
 			r_num_3 <= 0;
 			r_num_2 <= 0; 
@@ -188,7 +190,7 @@ module bankVault (
 			end
 		end
 	
-	end
+  end : rn_generator
 
 //**********************Mo Game***********************
   logic [19:0] game_one_bits;
@@ -196,27 +198,24 @@ module bankVault (
   logic mo_flag;
   logic ctTemp; 
 
-	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
+	gameOne gameOne_0 (.clk, .enable(game_1_en), .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
 	debounce debounce_0 (.clk, .reset_n, .rawInput(kphit), .debouncedInput(kphit_debounced));
 
   always_ff@(posedge clk) begin
-    if(current_state == game_1) begin
-        if ({1'b0, kpNum} == game_one_bits[19:15]) begin
+    if(current_state == game_1)  begin
+        if ({1'b0, kpNum} == game_one_bits[19:15])
           game_one_counter <= game_one_counter + 1;
-        end else begin
+         else 
           game_one_counter <= game_one_counter;
-        end
-    end else begin
+    end else
         game_one_counter <= 0;
-    end
-  end
-  
-  
-
-   
+    
+  end   
 
 //************************ mo game ***********************8
 
+
+// Used to drive the 7-segs
  	 always_ff @(posedge clk) begin
 		delayCnt <= delayCnt + 1'b1;  
  
@@ -254,10 +253,17 @@ module bankVault (
 	assign harder_string		= { 28'b0, 3'b100, rgb_output[0]}; 
 	assign victory_string	= { 28'hbadc0c0, 3'b101, rgb_output[0]};
 
-
   // State Variables
   logic [2:0] current_state;
   logic [2:0] next_state;  
+
+  //emable signals for the games
+  logic game_1_en, game_2_en, game_3_en, game_4_en;
+  assign game_1_en = current_state == game_1 ?  1 : 0;
+  assign game_2_en = current_state == game_2 ?  1 : 0;
+  assign game_3_en = current_state == game_3 ?  1 : 0;
+  assign game_4_en = current_state == harder ?  1 : 0;
+
 
   // System States
   localparam [2:0]
@@ -292,7 +298,7 @@ module bankVault (
               disp_num_2 <=  game_one_bits[9:5] ;
               disp_num_3 <=  {1'b0, kpNum} ;
               ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed 
-               
+              //Mo's game has different condition to drive the screen
 						      end
 							
       game_2    :	begin // james Game
@@ -355,17 +361,17 @@ module bankVault (
     else begin
       case (current_state)
 
-        start_up  : next_state = (kpNum == 1) ? game_1 : current_state;
+        start_up  : next_state = (kpNum == 15) ? game_1 : current_state;
 
         game_1    : next_state = (mo_flag) ? game_2 : current_state;
 
         game_2    : next_state = (james_flag) ? game_3 : current_state;
 
-        game_3    : next_state = (kpNum == 4 /* Clint flag */ ) ? harder : current_state;
+        game_3    : next_state = (emag_state_flag ) ? harder : current_state;
 		  
-		    harder		: next_state = (kpNum == 5 /* Clint flag agian, instantiate the tilt again*/) ? victory : current_state;
+		    harder		: next_state = (emag_state_flag_2) ? victory : current_state;
         
-        victory   : next_state = (kpNum == 6) ? start_up : current_state;
+        victory   : next_state = (~reset_n) ? start_up : current_state;
        
         default: begin
           next_state <= start_up;

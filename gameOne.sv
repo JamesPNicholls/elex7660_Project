@@ -1,4 +1,4 @@
-module gameOne( input logic clk, reset_n,
+module gameOne( input logic clk, enable, reset_n,
 				output logic [19:0] bits, 
 				output logic victoryflag,
 				input logic [2:0] gameCounter );
@@ -6,7 +6,7 @@ module gameOne( input logic clk, reset_n,
 	logic [19:0] stateBits;
 
 	always_ff@(posedge clk) begin
-		if (~reset_n) begin
+		if (~reset_n || ~enable) begin
 			bits <= 20'b11111100001000011111; //7-segs: 1st:off, 2nd:-, 3rd:-, 4th:off
 			victoryflag <= 0;
 		end
