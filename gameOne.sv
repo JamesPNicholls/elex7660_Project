@@ -16,7 +16,7 @@ module gameOne( input logic clk, reset_n,
 			if (gameCounter >= 3)
 				victoryflag <= 1;
 			else
-				victoryflag <= 0;
+				victoryflag <= 0;//
 		end
 	end
 	

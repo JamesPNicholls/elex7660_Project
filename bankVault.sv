@@ -126,7 +126,7 @@ module bankVault (
 		if (kphit == 1)
 			ctTemp =  1'b1;
 		else
-			ctTemp =  1'b0;
+			ctTemp =  1'b0;//
 
 		if (delayCnt == 0)
 			if (digit >= 3)
