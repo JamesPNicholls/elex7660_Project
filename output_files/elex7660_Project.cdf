@@ -1,4 +1,4 @@
-/* Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition */
+/* Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition */
 JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA4U23) Path("C:/Users/moham/Desktop/github/7660/elex7660_Project/output_files/") File("elex7660_Project.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA4U23) Path("C:/Users/retge/Documents/git_repo/elex7660_Project/output_files/") File("elex7660_Project.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
