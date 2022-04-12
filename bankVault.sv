@@ -43,11 +43,12 @@ module bankVault (
 
   logic clk ;               // clock
   logic [11:0] adcValue;    // ADC result    
-  logic [3:0] displayNum;	  // number to display on 7-seg
+  logic [4:0] displayNum;	  // number to display on 7-seg
   logic [3:0] kpNum; 		    // keypad output
   logic [2:0] digit;        // 7-seg display digit currently selected
   logic [7:0] delayCnt;     // delay count to slow down digit cycling on display
   logic kphit;              // keypad button press indicator
+  logic kphit_debounced;              // keypad button press indicator
 
 	pll pll0 ( .inclk0(FPGA_CLK1_50), .c0(clk) ) ;
 
@@ -60,29 +61,51 @@ module bankVault (
   logic [3:0] adc_chan;
   logic [11:0] adc_x_value;
   logic [11:0] adc_y_value;
-
-// Blessed Saint Gaudet
-//input logic  knock_input, 		//knock sensor input
-//input logic  reset_n, CLOCK_50,
-//output logic output_elmag,		//elmag output
-//output logic unlocked_flag);
 	
+	// Stuff for CLintin's moduel
 	logic emag_state_flag;
 	logic emag_out_flag;
 	safe_tilt_and_unlock safe_0( .knock_input(GPIO_1[1]), .reset_n, .CLOCK_50(FPGA_CLK1_50), .output_elmag(emag_out_flag), .unlocked_flag(emag_state_flag));
   
-  logic[15:0] emag_count;
-  always_comb begin
-		if(emag_state_flag) 
-			LED <= '1;
-		else
-			LED <= '0;
+  
+	
+
+
+  /*
+    input logic clk, reset_n,
+    input logic [11:0] adc_y, adc_x,
+    input logic [2:0]  num_1, num_2, num_3, num_4,
+    input logic [3:0]  key_press,
+    output logic [1:0] quadrant_out,
+
+    output logic pass_flag,
+	output logic q_match,
+    output logic [2:0] joy_stata
+  */
+  
+  //*************************James Game
+    logic[1:0] quadrant_out;
+  logic q_match;
+  logic james_flag;
+  logic [2:0] joy_state;
+  
+	joy_code joy_code_0( .clk, .reset_n, 
+                        .adc_y(adc_y_value), .adc_x(adc_x_value), 
+                        .num_1(r_num_0),  .num_2(r_num_1), .num_3(r_num_2), .num_4(r_num_3),
+                        .key_press(kpNum),
+                        .quadrant_out(quadrant_out), .pass_flag(james_flag), .q_match(q_match), .joy_state(joy_state));                  
+   //Some debug code
+  always_ff @ (posedge clk) begin
+		LED[7:5]    <= current_state;
+		LED[4] 		  <= q_match;
+		LED[3]      <= james_flag;
+		LED[2:0]    <= joy_state;
 	end
+	/*******************************James Game */
   
   
   adcinterface adcinterface_X(  .clk, .reset_n,  .chan(adc_chan), .result(adcValue), .ADC_CONVST, .ADC_SCK, .ADC_SDI, .ADC_SDO);
-  
-  
+    
   //Toggles the channel on the ADC to alternate sampling X and Y axis
    always_ff @(posedge clk ) begin
 
@@ -118,45 +141,24 @@ module bankVault (
   assign rgb_dc = rgb_output[0]; 
   assign rgb_res =   reset_n || (((kpNum[3:0] == `KP_POWER) & kphit) ? 0 : 1); //Power button on kpad for reset
 
-  // State Variables
-  logic [2:0] current_state;
-  logic [2:0] next_state;  
-
-  // System States
-  localparam [2:0]
-    start_up  = 0,
-    game_1    = 1,
-    game_2    = 2,
-    game_3    = 3,
-	 harder	  = 4,
-    victory   = 5,
-    fubar     = 7; //error state if anything bad happens
 
   /******************TESTING ADC********************************/
-	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
-    always_ff @(posedge clk) begin
-	// only switch to next digit when count rolls over for crisp display
-		begin
-			delayCnt <= delayCnt + 1'b1;  
-			if (delayCnt == 0)
-				if (digit >= 3)
-					digit <= '0;
-				else
-					digit <= digit + 1'b1 ;
-		end 
-	end
+
 
     // enable the 7-segment module for the selected digit
-	assign ct =  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
-
-    // select the bits from the 12-bit ADC result for the selected digit	
+	
+	// Using these displays as debug values
+  logic[4:0] disp_num_0;
+  logic[4:0] disp_num_1;  
+  logic[4:0] disp_num_2;
+  logic[4:0] disp_num_3;
 	always_comb
 	case( digit )
-        3 : displayNum <= r_num_3;
-        2 : displayNum <= r_num_2;
-        1 : displayNum <= r_num_1;
-        0 : displayNum <= r_num_0;
+        3 : displayNum <= disp_num_0;
+        2 : displayNum <= disp_num_1;
+        1 : displayNum <= disp_num_2;
+        0 : displayNum <= disp_num_3;
 		default: 
            displayNum = 'hf ; 
     endcase
@@ -164,6 +166,7 @@ module bankVault (
 
 
 	//Generates some random numbers to be used for Mo's and James's Game
+	// select the bits from the 12-bit ADC result for the selected digit
 	logic [3:0] r_num_3, r_num_2, r_num_1, r_num_0;
 	always_ff @ (posedge clk) begin
 		if(~reset_n) begin
@@ -172,11 +175,11 @@ module bankVault (
 			r_num_1 <= 0; 
 			r_num_0 <= 0;
 		end else begin
-			if(current_state != game_1) begin
-				r_num_3 <= adcValue[3:0];
-				r_num_2 <= adcValue[7:4]; 
-				r_num_1 <= adcValue[9:6]; 
-				r_num_0 <= adcValue[5:2];
+			if(current_state != game_2) begin
+				r_num_3 <= { 1'b0, adcValue[2:0]};
+				r_num_2 <= { 1'b0, adcValue[6:4]}; 
+				r_num_1 <= { 1'b0, adcValue[8:6]}; 
+				r_num_0 <= { 1'b0, adcValue[4:2]};
 			end else begin
 				r_num_3 <= r_num_3;
 				r_num_2 <= r_num_2; 
@@ -185,6 +188,48 @@ module bankVault (
 			end
 		end
 	
+	end
+
+//**********************Mo Game***********************
+  logic [19:0] game_one_bits;
+  logic [2:0] game_one_counter;
+  logic mo_flag;
+  logic ctTemp; 
+
+	gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
+	debounce debounce_0 (.clk, .reset_n, .rawInput(kphit), .debouncedInput(kphit_debounced));
+
+  always_ff@(posedge clk) begin
+    if(current_state == game_1) begin
+        if ({1'b0, kpNum} == game_one_bits[19:15]) begin
+          game_one_counter <= game_one_counter + 1;
+        end else begin
+          game_one_counter <= game_one_counter;
+        end
+    end else begin
+        game_one_counter <= 0;
+    end
+  end
+  
+  
+
+   
+
+//************************ mo game ***********************8
+
+ 	 always_ff @(posedge clk) begin
+		delayCnt <= delayCnt + 1'b1;  
+ 
+    if (delayCnt == 0)
+      if (digit >= 3)
+        digit <= '0;
+      else
+        digit <= digit + 1'b1 ;
+
+		if (kphit_debounced == 1)
+			ctTemp =  1'b1;
+		else
+			ctTemp =  1'b0;//
 	end
 
 
@@ -210,45 +255,94 @@ module bankVault (
 	assign victory_string	= { 28'hbadc0c0, 3'b101, rgb_output[0]};
 
 
+  // State Variables
+  logic [2:0] current_state;
+  logic [2:0] next_state;  
+
+  // System States
+  localparam [2:0]
+    start_up  = 0,
+    game_1    = 1,
+    game_2    = 2,
+    game_3    = 3,
+	  harder	  = 4,
+    victory   = 5,
+    fubar     = 7; //error state if anything bad happens 
+  
 	always_comb begin : state_logic
-	
-    
     unique case (current_state)  
       start_up  : begin
 
 							rgb_input <= start_string;
 						  current_state <= next_state;
+              disp_num_0 <= 16;
+              disp_num_1 <= 16;
+              disp_num_2 <= 16;
+              disp_num_3 <= 16;
+              ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+              
 						  
                   end
 						
-      game_1    : begin
+      game_1    : begin // Mo game
 							rgb_input <= game_1_string;
-						   current_state <= next_state;
+						  current_state <= next_state;
+              disp_num_0 <=  game_one_bits[19:15];
+              disp_num_1 <=  game_one_bits[14:10] ;
+              disp_num_2 <=  game_one_bits[9:5] ;
+              disp_num_3 <=  {1'b0, kpNum} ;
+              ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed 
                
 						      end
 							
-      game_2    :	begin
+      game_2    :	begin // james Game
 							rgb_input <= game_2_string;
 						  current_state <= next_state;
+              disp_num_0 <= r_num_3;
+              disp_num_1 <= r_num_2;
+              disp_num_2 <= r_num_1;
+              disp_num_3 <= r_num_0;
+              ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 						      end
 						
       game_3    :	begin
 							rgb_input <= game_3_string;
 						  current_state <= next_state;   
+              disp_num_0 <= 16;
+              disp_num_1 <= 16;
+              disp_num_2 <= 16;
+              disp_num_3 <= 16;
+              ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+
 							  end
 		harder	: begin
 							rgb_input <= harder_string;
 							current_state <= next_state;
+              disp_num_0 <= 16;
+              disp_num_1 <= 16;
+              disp_num_2 <= 16;
+              disp_num_3 <= 16;
+              ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 							end
 						
       victory   :	begin  
 							rgb_input <= victory_string;
-						    current_state <= next_state;  
+						  current_state <= next_state;
+              disp_num_0 <= 16;
+              disp_num_1 <= 16;
+              disp_num_2 <= 16;
+              disp_num_3 <= 16; 
+              ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed 
 								end
       
       default : begin
-			rgb_input <= 32'hbadc0c0a;
-			current_state <= next_state;
+        rgb_input <= 32'hbadc0c0a;
+        current_state <= next_state;
+        ct <=  (1'b1) << digit; //Channel_gate is used to verify that only the desired channel is being displayed
+        disp_num_0 <= 16;
+        disp_num_1 <= 16;
+        disp_num_2 <= 16;
+        disp_num_3 <= 16; 
       end
       
     endcase
@@ -263,13 +357,13 @@ module bankVault (
 
         start_up  : next_state = (kpNum == 1) ? game_1 : current_state;
 
-        game_1    : next_state = (kpNum == 2) ? game_2 : current_state;
+        game_1    : next_state = (mo_flag) ? game_2 : current_state;
 
-        game_2    : next_state = (kpNum == 3) ? game_3 : current_state;
+        game_2    : next_state = (james_flag) ? game_3 : current_state;
 
-        game_3    : next_state = (kpNum == 4) ? harder : current_state;
+        game_3    : next_state = (kpNum == 4 /* Clint flag */ ) ? harder : current_state;
 		  
-		  harder		: next_state = (kpNum == 5) ? victory : current_state;
+		    harder		: next_state = (kpNum == 5 /* Clint flag agian, instantiate the tilt again*/) ? victory : current_state;
         
         victory   : next_state = (kpNum == 6) ? start_up : current_state;
        
