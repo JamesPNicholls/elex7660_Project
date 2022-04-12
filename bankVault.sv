@@ -35,10 +35,7 @@ module bankVault (
               input logic  reset_n, 
               
               //OLED Controls
-              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res
-
-				 
-) ;
+              output logic rgb_din, rgb_clk, rgb_cs, rgb_dc, rgb_res );
 
   logic clk ;               // clock
   logic [11:0] adcValue;    // ADC result    
@@ -122,16 +119,14 @@ module bankVault (
   
   gameOne gameOne_0 (.clk, .reset_n, .bits(game_one_bits), .victoryflag(mo_flag), .gameCounter(game_one_counter));
 	
-  
-  /******************TESTING ADC********************************/
-	// cycle through the three hex digits in the 12-bit ADC result displaying one at a time
-    always_ff @(posedge clk) begin
+ 
+	 always_ff @(posedge clk) begin
 		delayCnt <= delayCnt + 1'b1;  
 
-      if (kphit == 1)
-	      ctTemp =  1'b1;
-	   else
-	      ctTemp =  1'b0;
+		if (kphit == 1)
+			ctTemp =  1'b1;
+		else
+			ctTemp =  1'b0;
 
 		if (delayCnt == 0)
 			if (digit >= 3)
@@ -140,12 +135,16 @@ module bankVault (
 				digit <= digit + 1'b1 ; 
 	end
 
+  always_ff@(posedge clk) begin
+    if ({1'b0, kpNum} == game_one_bits[19:15])
+      game_one_counter <= game_one_counter + 1;
+    else
+      game_one_counter <= game_one_counter;
+  end
     // enable the 7-segment module for the selected digit
 
   assign ct =  ctTemp << digit; //Channel_gate is used to verify that only the desired channel is being displayed
 
-
-    // select the bits from the 12-bit ADC result for the selected digit	
 	always_comb
 	case( digit )
         3 : displayNum <= game_one_bits[19:15] ;
